@@ -28,89 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.order1 = new WindowsFormsApp1.Order();
-            this.qlnv1 = new WindowsFormsApp1.QLNV();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.SuspendLayout();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            qlnv1 = new QLNV();
+            tabPage2 = new TabPage();
+            order1 = new Order();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1296, 814);
-            this.tabControl1.TabIndex = 1;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1296, 814);
+            tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.qlnv1);
-            this.tabPage1.Location = new System.Drawing.Point(8, 39);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1280, 767);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.order1);
-            this.tabPage2.Location = new System.Drawing.Point(8, 39);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1280, 767);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // order1
-            // 
-            this.order1.Location = new System.Drawing.Point(6, 6);
-            this.order1.Name = "order1";
-            this.order1.Size = new System.Drawing.Size(1268, 761);
-            this.order1.TabIndex = 0;
+            tabPage1.Controls.Add(qlnv1);
+            tabPage1.Location = new Point(8, 39);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1280, 767);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // qlnv1
             // 
-            this.qlnv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.qlnv1.Location = new System.Drawing.Point(3, 3);
-            this.qlnv1.Name = "qlnv1";
-            this.qlnv1.Size = new System.Drawing.Size(1274, 761);
-            this.qlnv1.TabIndex = 0;
+            qlnv1.Dock = DockStyle.Fill;
+            qlnv1.Location = new Point(3, 3);
+            qlnv1.Margin = new Padding(3, 4, 3, 4);
+            qlnv1.Name = "qlnv1";
+            qlnv1.Size = new Size(1274, 761);
+            qlnv1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(order1);
+            tabPage2.Location = new Point(8, 39);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1280, 767);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // order1
+            // 
+            order1.Location = new Point(6, 1);
+            order1.Margin = new Padding(3, 4, 3, 4);
+            order1.Name = "order1";
+            order1.Size = new Size(1268, 761);
+            order1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1296, 814);
-            this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QLNV";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(12F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            BackColor = SystemColors.GradientActiveCaption;
+            ClientSize = new Size(1296, 814);
+            Controls.Add(tabControl1);
+            Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Regular, GraphicsUnit.Point);
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "QLNV";
+            Load += Form1_Load;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private Order order1;
         private QLNV qlnv1;
     }

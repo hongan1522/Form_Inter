@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Tdya35x7qUFAjxf102E/0kO1a+4dEKFnYcD7RvxH4P+qHs6zCvuzSarRfjOsMJMnw8x1hQABZ8Gzrs+yw7B+VQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MyPC\\Desktop\\Form_NV\\BLL\\BLL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

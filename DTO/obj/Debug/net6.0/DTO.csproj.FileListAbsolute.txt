@@ -1,0 +1,12 @@
+C:\Users\MyPC\Desktop\Form_NV\DTO\bin\Debug\net6.0\DTO.deps.json
+C:\Users\MyPC\Desktop\Form_NV\DTO\bin\Debug\net6.0\DTO.dll
+C:\Users\MyPC\Desktop\Form_NV\DTO\bin\Debug\net6.0\DTO.pdb
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.AssemblyInfoInputs.cache
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.AssemblyInfo.cs
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.csproj.CoreCompileInputs.cache
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.dll
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\refint\DTO.dll
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.pdb
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\ref\DTO.dll
+C:\Users\MyPC\Desktop\Form_NV\DTO\obj\Debug\net6.0\DTO.csproj.AssemblyReference.cache

@@ -1,118 +1,101 @@
-﻿using OfficeOpenXml;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static WindowsFormsApp1.NhanVien;
+using DTO;
+using BLL;
+using System.Text.RegularExpressions;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.Globalization;
 
 namespace WindowsFormsApp1
 {
     public partial class QLNV : UserControl
     {
+        private readonly QuanLy_BLL bllNV;
+        private List<NhanVien>? listNV;
+
         public QLNV()
         {
             InitializeComponent();
+            bllNV = new QuanLy_BLL();
             dgvNV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvNV.AutoGenerateColumns = false;
+            AddDataSample();
+            LoadListNV();
         }
-        public DataGridView DgvNVText
+        private void QLNV_Load(object sender, EventArgs e)
         {
-            get { return dgvNV; }
-            set { dgvNV = value; }
-        }
-        internal void RefreshData()
-        {
-            throw new NotImplementedException();
-        }
-        public void SetTextBoxValues(string maNhanVien, string tenNhanVien, DateTime ngaySinh, string email, string sdt, string diaChi)
-        {
-            txtMaNV.Text = maNhanVien;
-            txtTenNV.Text = tenNhanVien;
-            dtpNS.Value = ngaySinh;
-            txtEmail.Text = email;
-            txtSDT.Text = sdt;
-            txtDC.Text = diaChi;
+            this.Size = new System.Drawing.Size(1271, 471);
         }
 
-        List<NhanVien> listNV = new List<NhanVien>();
+        private void AddDataSample()
+        {
+            dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
-        private bool IsMaNVDuplicate(string MaNV)
-        {
-            foreach (NhanVien nv in listNV)
+            List<NhanVien> listNVMau = new()
             {
-                if (nv.MaNhanVien == MaNV)
+                new NhanVien()
                 {
-                    return false;
+                    MaNhanVien = "NV1",
+                    TenNhanVien = "Nguyễn Văn A",
+                    NgaySinh = new DateTime(1990, 10, 01),
+                    Email = "nguyenvana@gmail.com",
+                    SDT = "0111111111",
+                    DiaChi = "123 Đường ABC, Quận ABC, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV2",
+                    TenNhanVien = "Trần Thị B",
+                    NgaySinh = new DateTime(1995, 5, 20),
+                    Email = "tranthib@gmail.com",
+                    SDT = "0111111112",
+                    DiaChi = "456 Đường DEF, Quận DEF, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV3",
+                    TenNhanVien = "Phạm Nguyễn Thị C",
+                    NgaySinh = new DateTime(1988, 8, 8),
+                    Email = "phamnguyenthic@gmail.com",
+                    SDT = "0111111113",
+                    DiaChi = "789 Đường GHI, Quận GHI, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV4",
+                    TenNhanVien = "Võ Lê Văn D",
+                    NgaySinh = new DateTime(1993, 3, 10),
+                    Email = "volevand@gmail.com",
+                    SDT = "0111111114",
+                    DiaChi = "111 Đường XYZ, Quận ZYZ, TPHCM"
                 }
+            };
+
+            foreach (NhanVien nhanVienMau in listNVMau)
+            {
+                bllNV.AddNV(nhanVienMau);
             }
 
-            return true;
+            LoadListNV();
+            Clear();
+
         }
-        private bool IsEmailDuplicate(string email)
+        private void LoadListNV()
         {
-            foreach (NhanVien nv in listNV)
-            {
-                if (nv.Email == email)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        private bool IsSDTDuplicate(string sdt)
-        {
-            foreach (NhanVien nv in listNV)
-            {
-                if (nv.SDT == sdt)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        private bool IsValidMaNV(string MaNV)
-        {
-            Regex regex = new Regex(@"^NV\d+$");
-            return regex.IsMatch(MaNV);
-        }
-        private bool IsValidPhoneNumber(string SDT)
-        {
-            if (SDT.Length == 10 && SDT[0] == '0')
-            {
-                foreach (char c in SDT)
-                {
-                    if (!char.IsDigit(c))
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            return false;
-        }
-        private bool IsValidEmail(string Email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                return addr.Address == Email;
-            }
-            catch
-            {
-                return false;
-            }
+            listNV = bllNV.GetListNV();
+            dgvNV.DataSource = null;
+            dgvNV.DataSource = listNV;
         }
         private void Clear()
         {
-            txtMaNV.Text = "";
-            txtTenNV.Text = "";
-            txtDC.Text = "";
-            txtEmail.Text = "";
-            txtSDT.Text = "";
+            txtMaNV.Clear();
+            txtTenNV.Clear();
             dtpNS.Value = DateTime.Now;
+            txtEmail.Clear();
+            txtSDT.Clear();
+            txtDC.Clear();
         }
         private bool TextBoxesFilled()
         {
@@ -122,6 +105,106 @@ namespace WindowsFormsApp1
                    !string.IsNullOrWhiteSpace(txtSDT.Text) &&
                    !string.IsNullOrWhiteSpace(txtEmail.Text);
         }
+        public bool IsMaNVValidAndNotDuplicate(NhanVien nhanVien)
+        {
+            // Kiểm tra Mã nhân viên không được null hoặc rỗng
+            if (string.IsNullOrEmpty(nhanVien.MaNhanVien))
+            {
+                MessageBox.Show("Mã nhân viên không được rỗng.");
+                return false;
+            }
+
+            // Kiểm tra xem MaNV có đúng định dạng không
+            Regex regex = new(@"^NV\d+$");
+            if (!regex.IsMatch(nhanVien.MaNhanVien))
+            {
+                MessageBox.Show("Mã nhân viên không hợp lệ. Vui lòng nhập đúng định dạng (vd: NV1, NV2,....)");
+                return false;
+            }
+
+            // Kiểm tra xem MaNV đã tồn tại trong danh sách nhân viên chưa
+            foreach (NhanVien nv in listNV)
+            {
+                if (nv.MaNhanVien == nhanVien.MaNhanVien)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public bool IsNVValid(NhanVien nv)
+        {
+            // Kiểm tra null hoặc không phải chuỗi số
+            if (string.IsNullOrEmpty(nv.SDT) || !nv.SDT.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            // Kiểm tra bắt đầu từ số 0 và có đúng 10 chữ số
+            if (!(nv.SDT.Length == 10 && nv.SDT.StartsWith("0")))
+            {
+                return false;
+            }
+
+            // Kiểm tra email hợp lệ
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(nv.Email);
+                if (addr.Address != nv.Email)
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            // Kiểm tra ngày sinh
+            if (nv.NgaySinh >= DateTime.Now)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool IsPhoneNumberDuplicate(NhanVien nv)
+        {
+            foreach (NhanVien existingNV in listNV)
+            {
+                if (existingNV.SDT == nv.SDT)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsEmailDuplicate(NhanVien nv)
+        {
+            foreach (NhanVien existingNV in listNV)
+            {
+                if (existingNV.Email == nv.Email)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void dgvNV_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow dr = dgvNV.CurrentRow;
+            if (dr != null)
+            {
+                txtMaNV.Text = (dr.Cells["MaNV"].Value ?? string.Empty).ToString();
+                txtTenNV.Text = (dr.Cells["TenNV"].Value ?? string.Empty).ToString();
+                dtpNS.Value = Convert.ToDateTime(dr.Cells["NgaySinh"].Value ?? DateTime.Now);
+                txtEmail.Text = (dr.Cells["Email"].Value ?? string.Empty).ToString();
+                txtSDT.Text = (dr.Cells["SDT"].Value ?? string.Empty).ToString();
+                txtDC.Text = (dr.Cells["DiaChi"].Value ?? string.Empty).ToString();
+            }
+        }
         private void QLNV_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && TextBoxesFilled())
@@ -130,50 +213,148 @@ namespace WindowsFormsApp1
                 btnNhapNV_Click(sender, e);
             }
         }
-        private void btnXoaNV_Click(object sender, EventArgs e)
+        private void dgvNV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            if (dgvNV.SelectedRows.Count > 0)
+            for (int i = 0; i < dgvNV.Rows.Count; i++)
             {
+                dgvNV.Rows[i].Cells["MaNV"].Value = "NV" + (i + 1);
+            }
+        }
 
-                DataGridViewRow Row = dgvNV.SelectedRows[0];
+        private void btnNhapNV_Click(object sender, EventArgs e)
+        {
+            dtpNS.Format = DateTimePickerFormat.Custom;
+            dtpNS.CustomFormat = "dd/MM/yyyy";
 
-                NhanVien nv = (NhanVien)Row.DataBoundItem;
+            NhanVien nv = new NhanVien()
+            {
+                MaNhanVien = txtMaNV.Text,
+                TenNhanVien = txtTenNV.Text,
+                DiaChi = txtDC.Text,
+                SDT = txtSDT.Text,
+                Email = txtEmail.Text,
+                NgaySinh = dtpNS.Value.Date
+            };
 
-                listNV.Remove(nv);
+            List<string> errorMessages = new List<string>();
 
-                dgvNV.DataSource = null;
-                dgvNV.DataSource = listNV;
+            if (!IsNVValid(nv))
+            {
+                errorMessages.Add("_ Nhân viên không hợp lệ (Định dạng email: name@gmail.com, SĐT bắt đầu từ 0 và có 10 chữ số, ngày sinh không thể chọn ngày hiện tại).\n");
+            }
+
+            if (!IsMaNVValidAndNotDuplicate(nv))
+            {
+                errorMessages.Add("_ Mã nhân viên không hợp lệ hoặc trùng lặp.\n");
+            }
+
+            if (IsEmailDuplicate(nv))
+            {
+                errorMessages.Add("_ Email đã tồn tại.\n");
+            }
+
+            if (IsPhoneNumberDuplicate(nv))
+            {
+                errorMessages.Add("_ Số điện thoại đã tồn tại.");
+            }
+
+            if (errorMessages.Count > 0)
+            {
+                string errorMessage = string.Join("\n", errorMessages);
+                MessageBox.Show("Thêm thất bại:\n" + errorMessage);
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một nhân viên để xóa.");
+                bllNV.AddNV(nv);
+                LoadListNV();
+                Clear();
+                MessageBox.Show("Thêm thành công");
+            }
+
+        }
+        private void btnXoaNV_Click(object sender, EventArgs e)
+        {
+            if (dgvNV.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần xóa.");
+                return;
+            }
+
+            DataGridViewRow selectedRow = dgvNV.CurrentRow;
+            string maNV = (selectedRow.Cells["MaNV"].Value ?? string.Empty).ToString();
+            if (!string.IsNullOrEmpty(maNV))
+            {
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên {maNV}?", "Xác nhận xóa?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        bllNV.RemoveNV(maNV);
+                        LoadListNV();
+                        MessageBox.Show("Xóa Nhân viên thành công.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Xóa Nhân viên không thành công. Lỗi: " + ex.Message);
+                    }
+                }
             }
         }
+
+        private bool isEditing = false;
+
         private void btnSuaNV_Click(object sender, EventArgs e)
         {
-            var nv = listNV.FirstOrDefault(a => a.MaNhanVien == txtMaNV.Text);
-            if (nv != null)
+            if (!isEditing)
             {
-                if (!string.IsNullOrWhiteSpace(txtTenNV.Text))
-                    nv.TenNhanVien = txtTenNV.Text;
+                isEditing = true;
+                txtMaNV.Enabled = false;
 
-                if (!string.IsNullOrWhiteSpace(txtSDT.Text) && IsValidPhoneNumber(txtSDT.Text))
-                    nv.SDT = txtSDT.Text;
+                DataGridViewRow selectedRow = dgvNV.CurrentRow;
+                if (selectedRow != null)
+                {
+                    txtMaNV.Text = selectedRow.Cells["MaNV"].Value.ToString();
+                    txtTenNV.Text = selectedRow.Cells["TenNV"].Value.ToString();
+                    dtpNS.Value = Convert.ToDateTime(selectedRow.Cells["NgaySinh"].Value);
+                    txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
+                    txtSDT.Text = selectedRow.Cells["SDT"].Value.ToString();
+                    txtDC.Text = selectedRow.Cells["DiaChi"].Value.ToString();
+                }
+            }
+            else
+            {
+                string maNhanVien = txtMaNV.Text;
+                string tenNhanVien = txtTenNV.Text;
+                DateTime ngaySinh = dtpNS.Value;
+                string email = txtEmail.Text;
+                string sdt = txtSDT.Text;
+                string diaChi = txtDC.Text;
 
-                if (!string.IsNullOrWhiteSpace(txtEmail.Text) && IsValidEmail(txtEmail.Text))
-                    nv.Email = txtEmail.Text;
+                NhanVien nv = new NhanVien()
+                {
+                    MaNhanVien = maNhanVien,
+                    TenNhanVien = tenNhanVien,
+                    NgaySinh = ngaySinh,
+                    Email = email,
+                    SDT = sdt,
+                    DiaChi = diaChi
+                };
 
-                if (!string.IsNullOrWhiteSpace(txtDC.Text))
-                    nv.DiaChi = txtDC.Text;
+                if (IsNVValid(nv))
+                {
+                    bllNV.UpdateNV(nv);
+                    LoadListNV();
+                    Clear();
+                    MessageBox.Show("Cập nhật thành công!");
 
-                nv.NgaySinh = dtpNS.Value;
-
-                int selectedIndex = 0;
-                dgvNV.Rows[selectedIndex].Cells[1].Value = nv.TenNhanVien;
-                dgvNV.Rows[selectedIndex].Cells[2].Value = nv.NgaySinh;
-                dgvNV.Rows[selectedIndex].Cells[3].Value = nv.SDT;
-                dgvNV.Rows[selectedIndex].Cells[4].Value = nv.Email;
-                dgvNV.Rows[selectedIndex].Cells[5].Value = nv.DiaChi;
+                    isEditing = false;
+                    txtMaNV.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
+                }
             }
         }
         private void btnExport_Click(object sender, EventArgs e)
@@ -216,93 +397,10 @@ namespace WindowsFormsApp1
                 {
                     var file = new FileInfo(saveFileDialog.FileName);
                     package.SaveAs(file);
+                    MessageBox.Show("Xuất dữ liệu thành công.");
                 }
             }
         }
-        private void ImportExcel(string path)
-        {
-            using (ExcelPackage excel = new ExcelPackage(new FileInfo(path)))
-            {
-                ExcelWorksheet worksheet = excel.Workbook.Worksheets[0];
-
-                DataTable dataTable = new DataTable();
-
-                for (int i = worksheet.Dimension.Start.Column; i <= worksheet.Dimension.End.Column; i++)
-                {
-                    dataTable.Columns.Add(worksheet.Cells[1, i].Value.ToString());
-                }
-
-                for (int i = worksheet.Dimension.Start.Row + 1; i <= worksheet.Dimension.End.Row; i++)
-                {
-                    List<string> list = new List<string>();
-                    for (int j = worksheet.Dimension.Start.Column; j <= worksheet.Dimension.End.Column; j++)
-                    {
-                        list.Add(worksheet.Cells[i, j].Value.ToString());
-                    }
-                    dataTable.Rows.Add(list.ToArray());
-                }
-
-                dgvNV.DataSource = dataTable;
-            }
-        }
-        private void btnNhapNV_Click(object sender, EventArgs e)
-        {
-            dtpNS.Format = DateTimePickerFormat.Custom;
-            dtpNS.CustomFormat = "dd/MM/yyyy";
-
-            NhanVien nv = new NhanVien();
-            nv.MaNhanVien = txtMaNV.Text;
-            nv.TenNhanVien = txtTenNV.Text;
-            nv.DiaChi = txtDC.Text;
-            nv.SDT = txtSDT.Text;
-            nv.Email = txtEmail.Text;
-            nv.NgaySinh = dtpNS.Value.Date;
-
-            if (!IsValidMaNV(nv.MaNhanVien))
-            {
-                MessageBox.Show("Mã nhân viên không hợp lệ. Vui lòng nhập đúng định dạng (vd: NV1, NV2,...)");
-                return;
-            }
-            else if (!IsMaNVDuplicate(nv.MaNhanVien))
-            {
-                MessageBox.Show("Mã nhân viên đã tồn tại. Vui lòng nhập lại.");
-                return;
-            }
-
-            if (!IsValidEmail(nv.Email))
-            {
-                MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng định dạng (vd: example@example.com).");
-                return;
-            }
-            else if (IsEmailDuplicate(nv.Email))
-            {
-                MessageBox.Show("Email đã tồn tại. Vui lòng nhập lại.");
-                return;
-            }
-
-            if (!IsValidPhoneNumber(nv.SDT))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập số điện thoại bắt đầu từ 0 và có 10 chữ số.");
-                return;
-            }
-            else if (IsSDTDuplicate(nv.SDT))
-            {
-                MessageBox.Show("SĐT đã tồn tại. Vui lòng nhập lại.");
-                return;
-            }
-
-            listNV.Add(nv);
-
-            dgvNV.DataSource = null;
-            dgvNV.DataSource = listNV;
-
-            Clear();
-        }
-        private void QLNV_Load(object sender, EventArgs e)
-        {
-            this.Size = new System.Drawing.Size(1271, 471);
-        }
-
         private void btnImport_Click(object sender, EventArgs e)
         {
             try
@@ -317,23 +415,14 @@ namespace WindowsFormsApp1
                     {
                         ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
 
-                        NhanVien nhanVien = new NhanVien();
+                        int row = 2;
                         int maxMaNV = 0;
 
-                        for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                        while (worksheet.Cells[row, 1].Value != null)
                         {
                             int maNhanVien;
                             if (int.TryParse(worksheet.Cells[row, 1].Value.ToString().Replace("NV", ""), out maNhanVien))
                             {
-                                if (!IsMaNVDuplicate("NV" + maNhanVien))
-                                {
-                                    maxMaNV = Math.Max(maxMaNV, maNhanVien);
-                                }
-                                else
-                                {
-                                    maxMaNV++;
-                                }
-
                                 NhanVien nv = new NhanVien
                                 {
                                     MaNhanVien = worksheet.Cells[row, 1].Value.ToString(),
@@ -343,11 +432,17 @@ namespace WindowsFormsApp1
                                     SDT = worksheet.Cells[row, 5].Value.ToString(),
                                     DiaChi = worksheet.Cells[row, 6].Value.ToString()
                                 };
-                                listNV.Add(nv);
-                            }
 
+                                if (IsMaNVValidAndNotDuplicate(nv))
+                                {
+                                    listNV.Add(nv);
+                                    maxMaNV = Math.Max(maxMaNV, maNhanVien);
+                                }
+                            }
+                            row++;
                         }
 
+                        dgvNV.DataSource = null;
                         dgvNV.DataSource = listNV;
                         dgvNV.Refresh();
                     }
@@ -358,39 +453,9 @@ namespace WindowsFormsApp1
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
-    }
-
-    internal class NhanVien
-    {
-        public string MaNhanVien { get; internal set; }
-        public string Email { get; internal set; }
-        public string SDT { get; internal set; }
-        public string TenNhanVien { get; internal set; }
-        public string DiaChi { get; internal set; }
-        public DateTime NgaySinh { get; internal set; }
-
-        public static implicit operator List<object>(NhanVien v)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Clear();
         }
     }
-    // Trong sự kiện SelectionChanged của DataGridView
-    //private void dgvNV_SelectionChanged(object sender, EventArgs e)
-    //    {
-    //        DataGridViewRow dr = dgvNV.CurrentRow;
-    //        if (dr != null)
-    //        {
-    //            // Lấy thông tin từ dòng được chọn và đổ vào các TextBox trong Form1
-    //            Form1.Instance.SetTextBoxValues(
-    //                dr.Cells["MaNV"].Value.ToString(),
-    //                dr.Cells["TenNV"].Value.ToString(),
-    //                Convert.ToDateTime(dr.Cells["NgaySinh"].Value),
-    //                dr.Cells["Email"].Value.ToString(),
-    //                dr.Cells["SDT"].Value.ToString(),
-    //                dr.Cells["DiaChi"].Value.ToString()
-    //            );
-    //        }
-    //    }
-
-    //}
 }

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "W5stddBw7Is4hC/5DLRTjmR+VMAv1dzXD1lJKd2b0iOCbkyTZ+DyhF6w78dHZVFDSm7XxEdo47Xu0VP8Wm5+0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MyPC\\Desktop\\Form_NV\\DTO\\DTO.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

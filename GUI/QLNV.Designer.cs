@@ -28,350 +28,361 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvNV = new System.Windows.Forms.DataGridView();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtDC = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.dtpNS = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTenNV = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnNhapNV = new System.Windows.Forms.Button();
-            this.btnXoaNV = new System.Windows.Forms.Button();
-            this.btnSuaNV = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNV)).BeginInit();
-            this.SuspendLayout();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            dgvNV = new DataGridView();
+            MaNV = new DataGridViewTextBoxColumn();
+            TenNV = new DataGridViewTextBoxColumn();
+            NgaySinh = new DataGridViewTextBoxColumn();
+            SDT = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            DiaChi = new DataGridViewTextBoxColumn();
+            btnRefresh = new Button();
+            label6 = new Label();
+            txtDC = new TextBox();
+            label5 = new Label();
+            txtSDT = new TextBox();
+            label4 = new Label();
+            txtEmail = new TextBox();
+            dtpNS = new DateTimePicker();
+            label3 = new Label();
+            label2 = new Label();
+            txtTenNV = new TextBox();
+            label1 = new Label();
+            txtMaNV = new TextBox();
+            btnImport = new Button();
+            btnExport = new Button();
+            btnNhapNV = new Button();
+            btnXoaNV = new Button();
+            btnSuaNV = new Button();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvNV).BeginInit();
+            SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvNV, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.19618F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1277, 492);
-            this.tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(dgvNV, 0, 0);
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 84.19618F));
+            tableLayoutPanel1.Size = new Size(1383, 630);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvNV
             // 
-            this.dgvNV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvNV.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvNV.ColumnHeadersHeight = 46;
-            this.dgvNV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaNV,
-            this.TenNV,
-            this.NgaySinh,
-            this.SDT,
-            this.Email,
-            this.DiaChi});
-            this.dgvNV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNV.Location = new System.Drawing.Point(3, 3);
-            this.dgvNV.Name = "dgvNV";
-            this.dgvNV.RowHeadersWidth = 82;
-            this.dgvNV.RowTemplate.Height = 33;
-            this.dgvNV.Size = new System.Drawing.Size(1271, 486);
-            this.dgvNV.TabIndex = 1;
+            dgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvNV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvNV.BackgroundColor = SystemColors.ControlLightLight;
+            dgvNV.ColumnHeadersHeight = 46;
+            dgvNV.Columns.AddRange(new DataGridViewColumn[] { MaNV, TenNV, NgaySinh, SDT, Email, DiaChi });
+            dgvNV.Dock = DockStyle.Fill;
+            dgvNV.Location = new Point(3, 4);
+            dgvNV.Margin = new Padding(3, 4, 3, 4);
+            dgvNV.Name = "dgvNV";
+            dgvNV.RowHeadersWidth = 82;
+            dgvNV.RowTemplate.Height = 33;
+            dgvNV.Size = new Size(1377, 622);
+            dgvNV.TabIndex = 1;
+            dgvNV.DataBindingComplete += dgvNV_DataBindingComplete;
+            dgvNV.SelectionChanged += dgvNV_SelectionChanged;
             // 
             // MaNV
             // 
-            this.MaNV.DataPropertyName = "MaNhanVien";
-            this.MaNV.FillWeight = 61.66808F;
-            this.MaNV.HeaderText = "Mã NV";
-            this.MaNV.MinimumWidth = 10;
-            this.MaNV.Name = "MaNV";
+            MaNV.DataPropertyName = "MaNhanVien";
+            MaNV.FillWeight = 61.66808F;
+            MaNV.HeaderText = "Mã NV";
+            MaNV.MinimumWidth = 10;
+            MaNV.Name = "MaNV";
             // 
             // TenNV
             // 
-            this.TenNV.DataPropertyName = "TenNhanVien";
-            this.TenNV.FillWeight = 124.1778F;
-            this.TenNV.HeaderText = "Tên NV";
-            this.TenNV.MinimumWidth = 10;
-            this.TenNV.Name = "TenNV";
+            TenNV.DataPropertyName = "TenNhanVien";
+            TenNV.FillWeight = 124.1778F;
+            TenNV.HeaderText = "Tên NV";
+            TenNV.MinimumWidth = 10;
+            TenNV.Name = "TenNV";
             // 
             // NgaySinh
             // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.FillWeight = 139.3108F;
-            this.NgaySinh.HeaderText = "Ngày Sinh";
-            this.NgaySinh.MinimumWidth = 10;
-            this.NgaySinh.Name = "NgaySinh";
+            NgaySinh.DataPropertyName = "NgaySinh";
+            NgaySinh.FillWeight = 139.3108F;
+            NgaySinh.HeaderText = "Ngày Sinh";
+            NgaySinh.MinimumWidth = 10;
+            NgaySinh.Name = "NgaySinh";
             // 
             // SDT
             // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.FillWeight = 83.46929F;
-            this.SDT.HeaderText = "SĐT";
-            this.SDT.MinimumWidth = 10;
-            this.SDT.Name = "SDT";
+            SDT.DataPropertyName = "SDT";
+            SDT.FillWeight = 83.46929F;
+            SDT.HeaderText = "SĐT";
+            SDT.MinimumWidth = 10;
+            SDT.Name = "SDT";
             // 
             // Email
             // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.FillWeight = 90.85173F;
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 10;
-            this.Email.Name = "Email";
+            Email.DataPropertyName = "Email";
+            Email.FillWeight = 90.85173F;
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 10;
+            Email.Name = "Email";
             // 
             // DiaChi
             // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.FillWeight = 100.5223F;
-            this.DiaChi.HeaderText = "Địa chỉ";
-            this.DiaChi.MinimumWidth = 10;
-            this.DiaChi.Name = "DiaChi";
+            DiaChi.DataPropertyName = "DiaChi";
+            DiaChi.FillWeight = 100.5223F;
+            DiaChi.HeaderText = "Địa chỉ";
+            DiaChi.MinimumWidth = 10;
+            DiaChi.Name = "DiaChi";
             // 
-            // button1
+            // btnRefresh
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(946, 678);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 53);
-            this.button1.TabIndex = 71;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = false;
+            btnRefresh.BackColor = SystemColors.Highlight;
+            btnRefresh.ForeColor = SystemColors.ButtonHighlight;
+            btnRefresh.Location = new Point(1025, 868);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(129, 68);
+            btnRefresh.TabIndex = 71;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(606, 617);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 24);
-            this.label6.TabIndex = 70;
-            this.label6.Text = "Địa Chỉ:";
+            label6.AutoSize = true;
+            label6.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(656, 790);
+            label6.Name = "label6";
+            label6.Size = new Size(88, 24);
+            label6.TabIndex = 70;
+            label6.Text = "Địa Chỉ:";
             // 
             // txtDC
             // 
-            this.txtDC.Location = new System.Drawing.Point(783, 610);
-            this.txtDC.Name = "txtDC";
-            this.txtDC.Size = new System.Drawing.Size(200, 31);
-            this.txtDC.TabIndex = 59;
+            txtDC.Location = new Point(848, 781);
+            txtDC.Margin = new Padding(3, 4, 3, 4);
+            txtDC.Name = "txtDC";
+            txtDC.Size = new Size(216, 39);
+            txtDC.TabIndex = 59;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(606, 573);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 24);
-            this.label5.TabIndex = 69;
-            this.label5.Text = "SĐT:";
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(656, 733);
+            label5.Name = "label5";
+            label5.Size = new Size(57, 24);
+            label5.TabIndex = 69;
+            label5.Text = "SĐT:";
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(783, 566);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(200, 31);
-            this.txtSDT.TabIndex = 58;
+            txtSDT.Location = new Point(848, 724);
+            txtSDT.Margin = new Padding(3, 4, 3, 4);
+            txtSDT.Name = "txtSDT";
+            txtSDT.Size = new Size(216, 39);
+            txtSDT.TabIndex = 58;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(606, 527);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 24);
-            this.label4.TabIndex = 68;
-            this.label4.Text = "Email:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(656, 675);
+            label4.Name = "label4";
+            label4.Size = new Size(72, 24);
+            label4.TabIndex = 68;
+            label4.Text = "Email:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(783, 523);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(200, 31);
-            this.txtEmail.TabIndex = 57;
+            txtEmail.Location = new Point(848, 669);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(216, 39);
+            txtEmail.TabIndex = 57;
             // 
             // dtpNS
             // 
-            this.dtpNS.Checked = false;
-            this.dtpNS.CustomFormat = "dd/MM/yyyy";
-            this.dtpNS.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNS.Location = new System.Drawing.Point(206, 607);
-            this.dtpNS.Name = "dtpNS";
-            this.dtpNS.Size = new System.Drawing.Size(200, 31);
-            this.dtpNS.TabIndex = 56;
+            dtpNS.Checked = false;
+            dtpNS.CustomFormat = "dd/MM/yyyy";
+            dtpNS.Format = DateTimePickerFormat.Custom;
+            dtpNS.Location = new Point(223, 777);
+            dtpNS.Margin = new Padding(3, 4, 3, 4);
+            dtpNS.Name = "dtpNS";
+            dtpNS.Size = new Size(216, 39);
+            dtpNS.TabIndex = 56;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 607);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 25);
-            this.label3.TabIndex = 67;
-            this.label3.Text = "Ngày Sinh:";
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(43, 777);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 25);
+            label3.TabIndex = 67;
+            label3.Text = "Ngày Sinh:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 566);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 25);
-            this.label2.TabIndex = 66;
-            this.label2.Text = "Tên NV:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(43, 724);
+            label2.Name = "label2";
+            label2.Size = new Size(97, 25);
+            label2.TabIndex = 66;
+            label2.Text = "Tên NV:";
             // 
             // txtTenNV
             // 
-            this.txtTenNV.Location = new System.Drawing.Point(206, 566);
-            this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(200, 31);
-            this.txtTenNV.TabIndex = 55;
+            txtTenNV.Location = new Point(223, 724);
+            txtTenNV.Margin = new Padding(3, 4, 3, 4);
+            txtTenNV.Name = "txtTenNV";
+            txtTenNV.Size = new Size(216, 39);
+            txtTenNV.TabIndex = 55;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(45, 529);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 25);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "Mã NV:";
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(49, 677);
+            label1.Name = "label1";
+            label1.Size = new Size(89, 25);
+            label1.TabIndex = 65;
+            label1.Text = "Mã NV:";
             // 
             // txtMaNV
             // 
-            this.txtMaNV.Location = new System.Drawing.Point(206, 523);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(200, 31);
-            this.txtMaNV.TabIndex = 54;
+            txtMaNV.Location = new Point(223, 669);
+            txtMaNV.Margin = new Padding(3, 4, 3, 4);
+            txtMaNV.Name = "txtMaNV";
+            txtMaNV.Size = new Size(216, 39);
+            txtMaNV.TabIndex = 54;
             // 
             // btnImport
             // 
-            this.btnImport.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnImport.Location = new System.Drawing.Point(688, 678);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(126, 48);
-            this.btnImport.TabIndex = 64;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = false;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            btnImport.BackColor = Color.AliceBlue;
+            btnImport.Location = new Point(745, 868);
+            btnImport.Margin = new Padding(3, 4, 3, 4);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new Size(136, 61);
+            btnImport.TabIndex = 64;
+            btnImport.Text = "Import";
+            btnImport.UseVisualStyleBackColor = false;
+            btnImport.Click += btnImport_Click;
             // 
             // btnExport
             // 
-            this.btnExport.BackColor = System.Drawing.Color.AliceBlue;
-            this.btnExport.Location = new System.Drawing.Point(467, 678);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(126, 48);
-            this.btnExport.TabIndex = 63;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            btnExport.BackColor = Color.AliceBlue;
+            btnExport.Location = new Point(506, 868);
+            btnExport.Margin = new Padding(3, 4, 3, 4);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(136, 61);
+            btnExport.TabIndex = 63;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
             // 
             // btnNhapNV
             // 
-            this.btnNhapNV.BackColor = System.Drawing.Color.LightSlateGray;
-            this.btnNhapNV.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnNhapNV.Location = new System.Drawing.Point(1090, 556);
-            this.btnNhapNV.Name = "btnNhapNV";
-            this.btnNhapNV.Size = new System.Drawing.Size(126, 56);
-            this.btnNhapNV.TabIndex = 60;
-            this.btnNhapNV.Text = "Nhập";
-            this.btnNhapNV.UseVisualStyleBackColor = false;
-            this.btnNhapNV.Click += new System.EventHandler(this.btnNhapNV_Click);
+            btnNhapNV.BackColor = Color.LightSlateGray;
+            btnNhapNV.ForeColor = SystemColors.ButtonHighlight;
+            btnNhapNV.Location = new Point(1181, 712);
+            btnNhapNV.Margin = new Padding(3, 4, 3, 4);
+            btnNhapNV.Name = "btnNhapNV";
+            btnNhapNV.Size = new Size(136, 72);
+            btnNhapNV.TabIndex = 60;
+            btnNhapNV.Text = "Nhập";
+            btnNhapNV.UseVisualStyleBackColor = false;
+            btnNhapNV.Click += btnNhapNV_Click;
             // 
             // btnXoaNV
             // 
-            this.btnXoaNV.BackColor = System.Drawing.Color.Lavender;
-            this.btnXoaNV.Location = new System.Drawing.Point(256, 678);
-            this.btnXoaNV.Name = "btnXoaNV";
-            this.btnXoaNV.Size = new System.Drawing.Size(119, 48);
-            this.btnXoaNV.TabIndex = 62;
-            this.btnXoaNV.Text = "Xóa";
-            this.btnXoaNV.UseVisualStyleBackColor = false;
-            this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
+            btnXoaNV.BackColor = Color.Lavender;
+            btnXoaNV.Location = new Point(277, 868);
+            btnXoaNV.Margin = new Padding(3, 4, 3, 4);
+            btnXoaNV.Name = "btnXoaNV";
+            btnXoaNV.Size = new Size(129, 61);
+            btnXoaNV.TabIndex = 62;
+            btnXoaNV.Text = "Xóa";
+            btnXoaNV.UseVisualStyleBackColor = false;
+            btnXoaNV.Click += btnXoaNV_Click;
             // 
             // btnSuaNV
             // 
-            this.btnSuaNV.BackColor = System.Drawing.Color.Lavender;
-            this.btnSuaNV.Location = new System.Drawing.Point(57, 678);
-            this.btnSuaNV.Name = "btnSuaNV";
-            this.btnSuaNV.Size = new System.Drawing.Size(119, 48);
-            this.btnSuaNV.TabIndex = 61;
-            this.btnSuaNV.Text = "Sửa";
-            this.btnSuaNV.UseVisualStyleBackColor = false;
-            this.btnSuaNV.Click += new System.EventHandler(this.btnSuaNV_Click);
+            btnSuaNV.BackColor = Color.Lavender;
+            btnSuaNV.Location = new Point(62, 868);
+            btnSuaNV.Margin = new Padding(3, 4, 3, 4);
+            btnSuaNV.Name = "btnSuaNV";
+            btnSuaNV.Size = new Size(129, 61);
+            btnSuaNV.TabIndex = 61;
+            btnSuaNV.Text = "Sửa";
+            btnSuaNV.UseVisualStyleBackColor = false;
+            btnSuaNV.Click += btnSuaNV_Click;
             // 
             // QLNV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtDC);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtSDT);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.dtpNS);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtTenNV);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMaNV);
-            this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnNhapNV);
-            this.Controls.Add(this.btnXoaNV);
-            this.Controls.Add(this.btnSuaNV);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "QLNV";
-            this.Size = new System.Drawing.Size(1288, 757);
-            this.Load += new System.EventHandler(this.QLNV_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QLNV_KeyDown);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNV)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnRefresh);
+            Controls.Add(label6);
+            Controls.Add(txtDC);
+            Controls.Add(label5);
+            Controls.Add(txtSDT);
+            Controls.Add(label4);
+            Controls.Add(txtEmail);
+            Controls.Add(dtpNS);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtTenNV);
+            Controls.Add(label1);
+            Controls.Add(txtMaNV);
+            Controls.Add(btnImport);
+            Controls.Add(btnExport);
+            Controls.Add(btnNhapNV);
+            Controls.Add(btnXoaNV);
+            Controls.Add(btnSuaNV);
+            Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "QLNV";
+            Size = new Size(1395, 969);
+            Load += QLNV_Load;
+            KeyDown += QLNV_KeyDown;
+            tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvNV).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dgvNV;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDC;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSDT;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.DateTimePicker dtpNS;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTenNV;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtMaNV;
-        private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.Button btnNhapNV;
-        private System.Windows.Forms.Button btnXoaNV;
-        private System.Windows.Forms.Button btnSuaNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView dgvNV;
+        private Button btnRefresh;
+        private Label label6;
+        private TextBox txtDC;
+        private Label label5;
+        private TextBox txtSDT;
+        private Label label4;
+        private TextBox txtEmail;
+        private DateTimePicker dtpNS;
+        private Label label3;
+        private Label label2;
+        private TextBox txtTenNV;
+        private Label label1;
+        private TextBox txtMaNV;
+        private Button btnImport;
+        private Button btnExport;
+        private Button btnNhapNV;
+        private Button btnXoaNV;
+        private Button btnSuaNV;
+        private DataGridViewTextBoxColumn MaNV;
+        private DataGridViewTextBoxColumn TenNV;
+        private DataGridViewTextBoxColumn NgaySinh;
+        private DataGridViewTextBoxColumn SDT;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn DiaChi;
     }
 }
