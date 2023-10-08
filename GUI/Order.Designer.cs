@@ -37,14 +37,14 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            btnImport = new Button();
-            btnExport = new Button();
-            btnXoaNV = new Button();
-            btnSuaNV = new Button();
-            btnNhapNV = new Button();
+            txtMaTTDH = new TextBox();
+            txtMoTa = new TextBox();
+            txtTenTT = new TextBox();
+            btnImportDH = new Button();
+            btnExportDH = new Button();
+            btnXoaDH = new Button();
+            btnSuaDH = new Button();
+            btnNhapDH = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDH).BeginInit();
             SuspendLayout();
@@ -66,7 +66,8 @@
             // 
             dgvDH.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dgvDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvDH.BackgroundColor = SystemColors.Control;
+            dgvDH.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgvDH.BackgroundColor = SystemColors.ButtonHighlight;
             dgvDH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDH.Columns.AddRange(new DataGridViewColumn[] { maTrangThaiDonHang, tenTrangThai, moTa });
             dgvDH.Location = new Point(3, 4);
@@ -79,18 +80,21 @@
             // 
             // maTrangThaiDonHang
             // 
+            maTrangThaiDonHang.DataPropertyName = "MaTrangThaiDonHang";
             maTrangThaiDonHang.HeaderText = "Mã Trạng Thái Đơn Hàng";
             maTrangThaiDonHang.MinimumWidth = 10;
             maTrangThaiDonHang.Name = "maTrangThaiDonHang";
             // 
             // tenTrangThai
             // 
+            tenTrangThai.DataPropertyName = "TenTrangThai";
             tenTrangThai.HeaderText = "Tên Trạng Thái ";
             tenTrangThai.MinimumWidth = 10;
             tenTrangThai.Name = "tenTrangThai";
             // 
             // moTa
             // 
+            moTa.DataPropertyName = "MoTa";
             moTa.HeaderText = "Mô Tả";
             moTa.MinimumWidth = 10;
             moTa.Name = "moTa";
@@ -108,120 +112,120 @@
             label2.AutoSize = true;
             label2.Location = new Point(48, 891);
             label2.Name = "label2";
-            label2.Size = new Size(78, 32);
+            label2.Size = new Size(82, 32);
             label2.TabIndex = 2;
-            label2.Text = "label2";
+            label2.Text = "Mô tả:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(48, 806);
             label3.Name = "label3";
-            label3.Size = new Size(78, 32);
+            label3.Size = new Size(167, 32);
             label3.TabIndex = 3;
-            label3.Text = "label3";
+            label3.Text = "Tên trạng thái:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(48, 724);
             label4.Name = "label4";
-            label4.Size = new Size(78, 32);
+            label4.Size = new Size(280, 32);
             label4.TabIndex = 4;
-            label4.Text = "label4";
+            label4.Text = "Mã trạng thái đơn hàng: ";
             // 
-            // textBox1
+            // txtMaTTDH
             // 
-            textBox1.Location = new Point(196, 724);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(433, 39);
-            textBox1.TabIndex = 5;
+            txtMaTTDH.Location = new Point(360, 724);
+            txtMaTTDH.Margin = new Padding(3, 4, 3, 4);
+            txtMaTTDH.Name = "txtMaTTDH";
+            txtMaTTDH.Size = new Size(269, 39);
+            txtMaTTDH.TabIndex = 5;
             // 
-            // textBox2
+            // txtMoTa
             // 
-            textBox2.Location = new Point(196, 891);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(433, 39);
-            textBox2.TabIndex = 6;
+            txtMoTa.Location = new Point(196, 891);
+            txtMoTa.Margin = new Padding(3, 4, 3, 4);
+            txtMoTa.Name = "txtMoTa";
+            txtMoTa.Size = new Size(433, 39);
+            txtMoTa.TabIndex = 6;
             // 
-            // textBox3
+            // txtTenTT
             // 
-            textBox3.Location = new Point(196, 806);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(433, 39);
-            textBox3.TabIndex = 7;
+            txtTenTT.Location = new Point(247, 806);
+            txtTenTT.Margin = new Padding(3, 4, 3, 4);
+            txtTenTT.Name = "txtTenTT";
+            txtTenTT.Size = new Size(382, 39);
+            txtTenTT.TabIndex = 7;
             // 
-            // btnImport
+            // btnImportDH
             // 
-            btnImport.BackColor = Color.AliceBlue;
-            btnImport.Location = new Point(973, 856);
-            btnImport.Margin = new Padding(3, 4, 3, 4);
-            btnImport.Name = "btnImport";
-            btnImport.Size = new Size(136, 74);
-            btnImport.TabIndex = 68;
-            btnImport.Text = "Import";
-            btnImport.UseVisualStyleBackColor = false;
+            btnImportDH.BackColor = Color.AliceBlue;
+            btnImportDH.Location = new Point(1212, 849);
+            btnImportDH.Margin = new Padding(3, 4, 3, 4);
+            btnImportDH.Name = "btnImportDH";
+            btnImportDH.Size = new Size(136, 74);
+            btnImportDH.TabIndex = 68;
+            btnImportDH.Text = "Import";
+            btnImportDH.UseVisualStyleBackColor = false;
             // 
-            // btnExport
+            // btnExportDH
             // 
-            btnExport.BackColor = Color.AliceBlue;
-            btnExport.Location = new Point(747, 856);
-            btnExport.Margin = new Padding(3, 4, 3, 4);
-            btnExport.Name = "btnExport";
-            btnExport.Size = new Size(136, 74);
-            btnExport.TabIndex = 67;
-            btnExport.Text = "Export";
-            btnExport.UseVisualStyleBackColor = false;
+            btnExportDH.BackColor = Color.AliceBlue;
+            btnExportDH.Location = new Point(986, 849);
+            btnExportDH.Margin = new Padding(3, 4, 3, 4);
+            btnExportDH.Name = "btnExportDH";
+            btnExportDH.Size = new Size(136, 74);
+            btnExportDH.TabIndex = 67;
+            btnExportDH.Text = "Export";
+            btnExportDH.UseVisualStyleBackColor = false;
             // 
-            // btnXoaNV
+            // btnXoaDH
             // 
-            btnXoaNV.BackColor = Color.Lavender;
-            btnXoaNV.Location = new Point(1219, 724);
-            btnXoaNV.Margin = new Padding(3, 4, 3, 4);
-            btnXoaNV.Name = "btnXoaNV";
-            btnXoaNV.Size = new Size(129, 72);
-            btnXoaNV.TabIndex = 66;
-            btnXoaNV.Text = "Xóa";
-            btnXoaNV.UseVisualStyleBackColor = false;
+            btnXoaDH.BackColor = Color.Lavender;
+            btnXoaDH.Location = new Point(1219, 724);
+            btnXoaDH.Margin = new Padding(3, 4, 3, 4);
+            btnXoaDH.Name = "btnXoaDH";
+            btnXoaDH.Size = new Size(129, 72);
+            btnXoaDH.TabIndex = 66;
+            btnXoaDH.Text = "Xóa";
+            btnXoaDH.UseVisualStyleBackColor = false;
             // 
-            // btnSuaNV
+            // btnSuaDH
             // 
-            btnSuaNV.BackColor = Color.Lavender;
-            btnSuaNV.Location = new Point(980, 724);
-            btnSuaNV.Margin = new Padding(3, 4, 3, 4);
-            btnSuaNV.Name = "btnSuaNV";
-            btnSuaNV.Size = new Size(129, 72);
-            btnSuaNV.TabIndex = 65;
-            btnSuaNV.Text = "Sửa";
-            btnSuaNV.UseVisualStyleBackColor = false;
+            btnSuaDH.BackColor = Color.Lavender;
+            btnSuaDH.Location = new Point(980, 724);
+            btnSuaDH.Margin = new Padding(3, 4, 3, 4);
+            btnSuaDH.Name = "btnSuaDH";
+            btnSuaDH.Size = new Size(129, 72);
+            btnSuaDH.TabIndex = 65;
+            btnSuaDH.Text = "Sửa";
+            btnSuaDH.UseVisualStyleBackColor = false;
             // 
-            // btnNhapNV
+            // btnNhapDH
             // 
-            btnNhapNV.BackColor = Color.LightSlateGray;
-            btnNhapNV.ForeColor = SystemColors.ButtonHighlight;
-            btnNhapNV.Location = new Point(747, 724);
-            btnNhapNV.Margin = new Padding(3, 4, 3, 4);
-            btnNhapNV.Name = "btnNhapNV";
-            btnNhapNV.Size = new Size(136, 72);
-            btnNhapNV.TabIndex = 69;
-            btnNhapNV.Text = "Nhập";
-            btnNhapNV.UseVisualStyleBackColor = false;
+            btnNhapDH.BackColor = Color.LightSlateGray;
+            btnNhapDH.ForeColor = SystemColors.ButtonHighlight;
+            btnNhapDH.Location = new Point(759, 724);
+            btnNhapDH.Margin = new Padding(3, 4, 3, 4);
+            btnNhapDH.Name = "btnNhapDH";
+            btnNhapDH.Size = new Size(136, 72);
+            btnNhapDH.TabIndex = 69;
+            btnNhapDH.Text = "Nhập";
+            btnNhapDH.UseVisualStyleBackColor = false;
             // 
             // Order
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnNhapNV);
-            Controls.Add(btnImport);
-            Controls.Add(btnExport);
-            Controls.Add(btnXoaNV);
-            Controls.Add(btnSuaNV);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(btnNhapDH);
+            Controls.Add(btnImportDH);
+            Controls.Add(btnExportDH);
+            Controls.Add(btnXoaDH);
+            Controls.Add(btnSuaDH);
+            Controls.Add(txtTenTT);
+            Controls.Add(txtMoTa);
+            Controls.Add(txtMaTTDH);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -240,20 +244,20 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private DataGridView dgvDH;
-        private DataGridViewTextBoxColumn maTrangThaiDonHang;
-        private DataGridViewTextBoxColumn tenTrangThai;
-        private DataGridViewTextBoxColumn moTa;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Button btnImport;
-        private Button btnExport;
-        private Button btnXoaNV;
-        private Button btnSuaNV;
-        private Button btnNhapNV;
+        private TextBox txtMaTTDH;
+        private TextBox txtMoTa;
+        private TextBox txtTenTT;
+        private Button btnImportDH;
+        private Button btnExportDH;
+        private Button btnXoaDH;
+        private Button btnSuaDH;
+        private Button btnNhapDH;
+        private DataGridViewTextBoxColumn maTrangThaiDonHang;
+        private DataGridViewTextBoxColumn tenTrangThai;
+        private DataGridViewTextBoxColumn moTa;
     }
 }

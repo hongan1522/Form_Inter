@@ -38,27 +38,26 @@ namespace DAL
                 existingNV.DiaChi = nv.DiaChi;
             }
         }
-        
 
-        //public List<Orders> GetListDataFrom()
-        //{
-        //    Uri Url = new Uri("http://data.gonsa.com.vn/api/order/getTrangThaiDonHang");
-        //    var restClient = new RestClient(Url);
-        //    RestRequest restRequest = new RestRequest("", Method.Get);
-        //    var restResponse = restClient.Execute<List<Orders>>(restRequest);
 
-        //    if (restResponse.IsSuccessful)
-        //    {
-        //        var data = restResponse.Data;
-        //        //dgvTrangThaiDonHang.DataSource = data;
-        //        return data;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine(restResponse.ErrorMessage);
-        //        return null;
-        //    }
-        //}
+        public List<Orders> GetListDataFrom()
+        {
+            Uri Url = new Uri("http://data.gonsa.com.vn/api/order/getTrangThaiDonHang");
+            var restClient = new RestClient(Url);
+            RestRequest restRequest = new RestRequest("", Method.Get);
+            var restResponse = restClient.Execute<List<Orders>>(restRequest);
+
+            if (restResponse.IsSuccessful)
+            {
+                var data = restResponse.Data;
+                return data;
+            }
+            else
+            {
+                Console.WriteLine(restResponse.ErrorMessage);
+                return null;
+            }
+        }
 
     }
 }
