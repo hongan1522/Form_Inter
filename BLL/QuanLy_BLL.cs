@@ -11,10 +11,12 @@ namespace BLL
     public class QuanLy_BLL
     {
         private readonly QuanLy_DAL nhanVien;
+        private readonly QuanLy_DAL order;
 
         public QuanLy_BLL()
         {
             nhanVien = new QuanLy_DAL();
+            order = new QuanLy_DAL();
         }
        
         public List<NhanVien> GetListNV()
@@ -35,10 +37,18 @@ namespace BLL
             nhanVien.UpdateNV(nv);
         }
 
-        public List<Orders> getListFromDAL()
+        public List<Orders> getListDHFromDAL()
         {
             var api = new QuanLy_DAL();
-            return api.GetListDataFrom();
+            return api.GetListDHFromAPI();
+        }
+        public void UpdateDH(Orders or)
+        {
+            order.UpdateDH(or);
+        }
+        public List<Orders> GetListDH()
+        { 
+            return order.GetListDH(); 
         }
     }
 }

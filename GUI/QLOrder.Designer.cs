@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Order
+    partial class QLOrder
     {
         /// <summary> 
         /// Required designer variable.
@@ -45,6 +45,7 @@
             btnXoaDH = new Button();
             btnSuaDH = new Button();
             btnNhapDH = new Button();
+            btnRefreshDH = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDH).BeginInit();
             SuspendLayout();
@@ -77,6 +78,8 @@
             dgvDH.RowTemplate.Height = 33;
             dgvDH.Size = new Size(1360, 682);
             dgvDH.TabIndex = 1;
+            dgvDH.DataBindingComplete += dgvDH_DataBindingComplete;
+            dgvDH.SelectionChanged += dgvDH_SelectionChanged;
             // 
             // maTrangThaiDonHang
             // 
@@ -161,35 +164,38 @@
             // btnImportDH
             // 
             btnImportDH.BackColor = Color.AliceBlue;
-            btnImportDH.Location = new Point(1212, 849);
+            btnImportDH.Location = new Point(1202, 849);
             btnImportDH.Margin = new Padding(3, 4, 3, 4);
             btnImportDH.Name = "btnImportDH";
-            btnImportDH.Size = new Size(136, 74);
+            btnImportDH.Size = new Size(129, 74);
             btnImportDH.TabIndex = 68;
             btnImportDH.Text = "Import";
             btnImportDH.UseVisualStyleBackColor = false;
+            btnImportDH.Click += btnImportDH_Click;
             // 
             // btnExportDH
             // 
             btnExportDH.BackColor = Color.AliceBlue;
-            btnExportDH.Location = new Point(986, 849);
+            btnExportDH.Location = new Point(980, 849);
             btnExportDH.Margin = new Padding(3, 4, 3, 4);
             btnExportDH.Name = "btnExportDH";
-            btnExportDH.Size = new Size(136, 74);
+            btnExportDH.Size = new Size(129, 74);
             btnExportDH.TabIndex = 67;
             btnExportDH.Text = "Export";
             btnExportDH.UseVisualStyleBackColor = false;
+            btnExportDH.Click += btnExportDH_Click;
             // 
             // btnXoaDH
             // 
             btnXoaDH.BackColor = Color.Lavender;
-            btnXoaDH.Location = new Point(1219, 724);
+            btnXoaDH.Location = new Point(1202, 724);
             btnXoaDH.Margin = new Padding(3, 4, 3, 4);
             btnXoaDH.Name = "btnXoaDH";
             btnXoaDH.Size = new Size(129, 72);
             btnXoaDH.TabIndex = 66;
             btnXoaDH.Text = "Xóa";
             btnXoaDH.UseVisualStyleBackColor = false;
+            btnXoaDH.Click += btnXoaDH_Click;
             // 
             // btnSuaDH
             // 
@@ -201,6 +207,7 @@
             btnSuaDH.TabIndex = 65;
             btnSuaDH.Text = "Sửa";
             btnSuaDH.UseVisualStyleBackColor = false;
+            btnSuaDH.Click += btnSuaDH_Click;
             // 
             // btnNhapDH
             // 
@@ -213,11 +220,26 @@
             btnNhapDH.TabIndex = 69;
             btnNhapDH.Text = "Nhập";
             btnNhapDH.UseVisualStyleBackColor = false;
+            btnNhapDH.Click += btnNhapDH_Click;
             // 
-            // Order
+            // btnRefreshDH
+            // 
+            btnRefreshDH.BackColor = SystemColors.Highlight;
+            btnRefreshDH.ForeColor = SystemColors.ButtonHighlight;
+            btnRefreshDH.Location = new Point(766, 849);
+            btnRefreshDH.Margin = new Padding(3, 4, 3, 4);
+            btnRefreshDH.Name = "btnRefreshDH";
+            btnRefreshDH.Size = new Size(129, 74);
+            btnRefreshDH.TabIndex = 72;
+            btnRefreshDH.Text = "Refresh";
+            btnRefreshDH.UseVisualStyleBackColor = false;
+            btnRefreshDH.Click += btnRefreshDH_Click;
+            // 
+            // QLOrder
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnRefreshDH);
             Controls.Add(btnNhapDH);
             Controls.Add(btnImportDH);
             Controls.Add(btnExportDH);
@@ -232,7 +254,7 @@
             Controls.Add(label1);
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Order";
+            Name = "QLOrder";
             Size = new Size(1369, 966);
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDH).EndInit();
@@ -259,5 +281,6 @@
         private DataGridViewTextBoxColumn maTrangThaiDonHang;
         private DataGridViewTextBoxColumn tenTrangThai;
         private DataGridViewTextBoxColumn moTa;
+        private Button btnRefreshDH;
     }
 }

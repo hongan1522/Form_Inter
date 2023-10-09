@@ -576,7 +576,8 @@
         "dependencies": {
           "DAL": "1.0.0",
           "DTO": "1.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
           "bin/placeholder/BLL.dll": {}
@@ -591,7 +592,8 @@
         "dependencies": {
           "DTO": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
-          "RestSharp": "110.2.0"
+          "RestSharp": "110.2.0",
+          "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -604,7 +606,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "7.0.1"
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
           "bin/placeholder/DTO.dll": {}

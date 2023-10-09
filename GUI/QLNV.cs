@@ -191,7 +191,6 @@ namespace WindowsFormsApp1
             }
             return false;
         }
-
         private void dgvNV_SelectionChanged(object sender, EventArgs e)
         {
             DataGridViewRow dr = dgvNV.CurrentRow;
@@ -204,6 +203,7 @@ namespace WindowsFormsApp1
                 txtSDT.Text = (dr.Cells["SDT"].Value ?? string.Empty).ToString();
                 txtDC.Text = (dr.Cells["DiaChi"].Value ?? string.Empty).ToString();
             }
+            txtMaNV.Enabled = false;
         }
         private void QLNV_KeyDown(object sender, KeyEventArgs e)
         {

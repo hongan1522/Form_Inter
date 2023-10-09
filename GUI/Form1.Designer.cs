@@ -32,7 +32,7 @@
             tabPage1 = new TabPage();
             qlnv1 = new QLNV();
             tabPage2 = new TabPage();
-            order1 = new Order();
+            qlOrder1 = new QLOrder();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(order1);
+            tabPage2.Controls.Add(qlOrder1);
             tabPage2.Location = new Point(8, 39);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -80,13 +80,12 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // order1
+            // qlOrder1
             // 
-            order1.Location = new Point(6, 1);
-            order1.Margin = new Padding(3, 4, 3, 4);
-            order1.Name = "order1";
-            order1.Size = new Size(1268, 761);
-            order1.TabIndex = 0;
+            qlOrder1.Location = new Point(0, -12);
+            qlOrder1.Name = "qlOrder1";
+            qlOrder1.Size = new Size(2738, 1932);
+            qlOrder1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -112,8 +111,8 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Order order1;
         private QLNV qlnv1;
+        private QLOrder qlOrder1;
     }
 }
 

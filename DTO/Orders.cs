@@ -11,5 +11,15 @@ namespace DTO
         public string MaTrangThaiDonHang { get; set; } = null!;
         public string TenTrangThai { get; set; } = null!;
         public string? MoTa { get; set; }
+
+        public Orders() { }
+
+        public Orders(string maTrangThaiDonHang, string tenTrangThai, string? moTa)
+        {
+            MaTrangThaiDonHang = maTrangThaiDonHang;
+            TenTrangThai = tenTrangThai;
+            MoTa = moTa;
+        }
     }
+    
 }
