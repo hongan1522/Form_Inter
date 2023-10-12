@@ -15,6 +15,9 @@ using OfficeOpenXml;
 using System.IO;
 using System.IO.Packaging;
 using System.Text.RegularExpressions;
+using System.Configuration;
+using System.Security.Cryptography;
+using System.Xml;
 
 namespace WindowsFormsApp1
 {
@@ -24,7 +27,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             bllTTDH = new QuanLy_BLL();
-            //txtMaTTDH.Enabled = false;
             dgvDH.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDH.AutoGenerateColumns = false;
             AddDataSample();
@@ -45,7 +47,6 @@ namespace WindowsFormsApp1
                 dgvDH.Rows.Add(item.MaTrangThaiDonHang, item.TenTrangThai, item.MoTa);
             }
         }
-
         private void dgvDH_SelectionChanged(object sender, EventArgs e)
         {
             DataGridViewRow dr = dgvDH.CurrentRow;
@@ -59,9 +60,22 @@ namespace WindowsFormsApp1
         }
         private void dgvDH_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            for (int i = 0; i < dgvDH.Rows.Count; i++)
+            List<Orders> dataList = (List<Orders>)dgvDH.DataSource;
+
+            if (dataList != null)
             {
-                dgvDH.Rows[i].Cells["maTrangThaiDonHang"].Value = "OS00" + (i + 1);
+                for (int i = 0; i < dgvDH.Rows.Count; i++)
+                {
+                    dgvDH.Rows[i].Cells["maTrangThaiDonHang"].Value = dataList[i].MaTrangThaiDonHang;
+                }
+            }
+        }
+        private void QLOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtMaTTDH.Text) && !string.IsNullOrWhiteSpace(txtTenTT.Text) && !string.IsNullOrWhiteSpace(txtMoTa.Text))
+            {
+                e.SuppressKeyPress = true;
+                btnNhapDH_Click(sender, e);
             }
         }
         private void AddDataSample()
@@ -91,19 +105,6 @@ namespace WindowsFormsApp1
             dgvDH.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public void LoadDataFromImport(List<Orders> list)
-        {
-            dgvDH.DataSource = null;
-            listTTDH = list;
-            //DataTable table = ConvertListToDataTable(listTTDH);
-
-            dgvDH.DataSource = listTTDH;
-
-            dgvDH.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dgvDH.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvDH.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        }
-
         private void resetDataGridView()
         {
             dgvDH.DataSource = null;
@@ -122,7 +123,6 @@ namespace WindowsFormsApp1
             else
             {
                 Orders order = new Orders();
-                //order.MaTrangThaiDonHang = "OS00" + maTangDan.ToString();
                 order.TenTrangThai = txtTenTT.Text;
                 order.MoTa = txtMoTa.Text;
                 List<Orders> results = listTTDH.FindAll(x => x.MaTrangThaiDonHang == order.MaTrangThaiDonHang);
@@ -160,6 +160,7 @@ namespace WindowsFormsApp1
         }
         private void CleartxtDH()
         {
+            txtMaTTDH.Enabled = true;
             txtMaTTDH.Clear();
             txtTenTT.Clear();
             txtMoTa.Clear();
@@ -349,6 +350,178 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
-    } 
+        private void SaveEncryptedDataToConfig(List<Orders> dataList)
+        {
+            string filePath = "MaHoa.config"; // Đường dẫn tới tệp MaHoa.config
+
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<?xml version=\"1.0\" encoding=\"utf-8\" ?><configuration><appSettings></appSettings></configuration>");
+
+            XmlNode appSettingsNode = doc.SelectSingleNode("//appSettings");
+
+            if (appSettingsNode != null)
+            {
+                foreach (var item in dataList)
+                {
+                    XmlElement addElement = doc.CreateElement("add");
+                    addElement.SetAttribute("key", item.MaTrangThaiDonHang);
+                    addElement.SetAttribute("value", item.TenTrangThai);
+                    appSettingsNode.AppendChild(addElement);
+                }
+
+                doc.Save(filePath);
+            }
+        }
+        private List<Orders> GetEncryptedDataFromConfig()
+        {
+            List<Orders> encryptedDataList = new List<Orders>();
+
+            string filePath = "MaHoa.config"; // Đường dẫn tới tệp MaHoa.config
+
+            // Kiểm tra xem tệp tồn tại
+            if (File.Exists(filePath))
+            {
+                // Nạp tệp cấu hình XML
+                XmlDocument doc = new XmlDocument();
+                doc.Load(filePath);
+
+                // Lấy danh sách các phần tử <add>
+                XmlNodeList addNodes = doc.SelectNodes("//appSettings/add");
+
+                foreach (XmlNode addNode in addNodes)
+                {
+                    string key = addNode.Attributes["key"].Value;
+                    string value = addNode.Attributes["value"].Value;
+
+                    encryptedDataList.Add(new Orders
+                    {
+                        MaTrangThaiDonHang = key,
+                        TenTrangThai = value
+                    });
+                }
+            }
+
+            return encryptedDataList;
+        }
+        private void btnMaHoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Orders> dataList = (List<Orders>)dgvDH.DataSource;
+
+
+                if (dataList != null)
+                {
+                    foreach (var item in dataList)
+                    {
+                        item.MaTrangThaiDonHang = Encrypt(item.MaTrangThaiDonHang);
+                        item.TenTrangThai = Encrypt(item.TenTrangThai);
+                    }
+
+                    dgvDH.DataSource = null;
+                    dgvDH.DataSource = dataList;
+
+                    SaveEncryptedDataToConfig(dataList);
+
+                    MessageBox.Show("Mã hóa dữ liệu thành công và lưu vào MaHoa.config!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi mã hóa dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGiaiMa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Orders> encryptedDataList = GetEncryptedDataFromConfig();
+
+                if (encryptedDataList != null)
+                {
+                    foreach (var item in encryptedDataList)
+                    {
+                        item.MaTrangThaiDonHang = Decrypt(item.MaTrangThaiDonHang);
+                        item.TenTrangThai = Decrypt(item.TenTrangThai);
+                    }
+
+                    dgvDH.DataSource = null;
+                    dgvDH.DataSource = encryptedDataList;
+
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Text Files|*.txt";
+                    saveFileDialog.FileName = "DecryptedData.txt";
+                    saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+                        SaveDecryptedDataToTextFile(encryptedDataList, filePath);
+
+                        MessageBox.Show("Giải mã dữ liệu thành công và lưu vào tệp văn bản!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi giải mã dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Lưu dữ liệu đã giải mã vào tệp văn bản
+        private void SaveDecryptedDataToTextFile(List<Orders> dataList, string filePath)
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (var item in dataList)
+                {
+                    writer.WriteLine($"MaTrangThaiDonHang: {item.MaTrangThaiDonHang}, TenTrangThai: {item.TenTrangThai}");
+                }
+            }
+        }
+
+        // Hàm mã hóa văn bản sử dụng AES
+        private string Encrypt(string input)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Encoding.UTF8.GetBytes("1234567890123456"); // Thay thế bằng khóa mã hóa của bạn
+                aesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456"); // Thay thế bằng vector khởi tạo của bạn
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                    {
+                        swEncrypt.Write(input);
+                    }
+
+                    return Convert.ToBase64String(msEncrypt.ToArray());
+                }
+            }
+        }
+
+        // Hàm giải mã văn bản sử dụng AES
+        private string Decrypt(string cipherText)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Encoding.UTF8.GetBytes("1234567890123456");
+                aesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456");
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                {
+                    return srDecrypt.ReadToEnd();
+                }
+            }
+        }
+    }
 }
 

@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Globalization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
@@ -26,9 +27,8 @@ namespace WindowsFormsApp1
         }
         private void QLNV_Load(object sender, EventArgs e)
         {
-            this.Size = new System.Drawing.Size(1271, 471);
+            this.Size = new System.Drawing.Size(1271, 855);
         }
-
         private void AddDataSample()
         {
             dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -90,6 +90,7 @@ namespace WindowsFormsApp1
         }
         private void Clear()
         {
+            txtMaNV.Enabled = true;
             txtMaNV.Clear();
             txtTenNV.Clear();
             dtpNS.Value = DateTime.Now;
@@ -220,7 +221,6 @@ namespace WindowsFormsApp1
                 dgvNV.Rows[i].Cells["MaNV"].Value = "NV" + (i + 1);
             }
         }
-
         private void btnNhapNV_Click(object sender, EventArgs e)
         {
             dtpNS.Format = DateTimePickerFormat.Custom;

@@ -62,20 +62,19 @@
             // 
             // qlnv1
             // 
-            qlnv1.Dock = DockStyle.Fill;
-            qlnv1.Location = new Point(3, 3);
+            qlnv1.Location = new Point(0, 0);
             qlnv1.Margin = new Padding(3, 4, 3, 4);
             qlnv1.Name = "qlnv1";
-            qlnv1.Size = new Size(1274, 761);
+            qlnv1.Size = new Size(1271, 855);
             qlnv1.TabIndex = 0;
             // 
             // tabPage2
             // 
             tabPage2.Controls.Add(qlOrder1);
-            tabPage2.Location = new Point(8, 39);
+            tabPage2.Location = new Point(8, 46);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1280, 767);
+            tabPage2.Size = new Size(1280, 760);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
@@ -83,6 +82,7 @@
             // qlOrder1
             // 
             qlOrder1.Location = new Point(0, -12);
+            qlOrder1.Margin = new Padding(3, 4, 3, 4);
             qlOrder1.Name = "qlOrder1";
             qlOrder1.Size = new Size(2738, 1932);
             qlOrder1.TabIndex = 0;
@@ -96,9 +96,11 @@
             ClientSize = new Size(1296, 814);
             Controls.Add(tabControl1);
             Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Regular, GraphicsUnit.Point);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "QLNV";
+            Text = "Quản Lý";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
@@ -111,8 +113,8 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private QLNV qlnv1;
         private QLOrder qlOrder1;
+        private QLNV qlnv1;
     }
 }
 

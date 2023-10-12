@@ -3,6 +3,7 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,6 @@ namespace BLL
             nhanVien = new QuanLy_DAL();
             order = new QuanLy_DAL();
         }
-       
         public List<NhanVien> GetListNV()
         {
             return nhanVien.GetListNV();
@@ -36,7 +36,6 @@ namespace BLL
         {
             nhanVien.UpdateNV(nv);
         }
-
         public List<Orders> getListDHFromDAL()
         {
             var api = new QuanLy_DAL();
@@ -45,10 +44,6 @@ namespace BLL
         public void UpdateDH(Orders or)
         {
             order.UpdateDH(or);
-        }
-        public List<Orders> GetListDH()
-        { 
-            return order.GetListDH(); 
         }
     }
 }

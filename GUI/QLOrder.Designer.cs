@@ -46,6 +46,8 @@
             btnSuaDH = new Button();
             btnNhapDH = new Button();
             btnRefreshDH = new Button();
+            btnMaHoa = new Button();
+            btnGiaiMa = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDH).BeginInit();
             SuspendLayout();
@@ -144,6 +146,7 @@
             txtMaTTDH.Name = "txtMaTTDH";
             txtMaTTDH.Size = new Size(269, 39);
             txtMaTTDH.TabIndex = 5;
+            txtMaTTDH.KeyDown += QLOrder_KeyDown;
             // 
             // txtMoTa
             // 
@@ -151,7 +154,8 @@
             txtMoTa.Margin = new Padding(3, 4, 3, 4);
             txtMoTa.Name = "txtMoTa";
             txtMoTa.Size = new Size(433, 39);
-            txtMoTa.TabIndex = 6;
+            txtMoTa.TabIndex = 7;
+            txtMoTa.KeyDown += QLOrder_KeyDown;
             // 
             // txtTenTT
             // 
@@ -159,15 +163,16 @@
             txtTenTT.Margin = new Padding(3, 4, 3, 4);
             txtTenTT.Name = "txtTenTT";
             txtTenTT.Size = new Size(382, 39);
-            txtTenTT.TabIndex = 7;
+            txtTenTT.TabIndex = 6;
+            txtTenTT.KeyDown += QLOrder_KeyDown;
             // 
             // btnImportDH
             // 
             btnImportDH.BackColor = Color.AliceBlue;
-            btnImportDH.Location = new Point(1202, 849);
+            btnImportDH.Location = new Point(1021, 860);
             btnImportDH.Margin = new Padding(3, 4, 3, 4);
             btnImportDH.Name = "btnImportDH";
-            btnImportDH.Size = new Size(129, 74);
+            btnImportDH.Size = new Size(126, 70);
             btnImportDH.TabIndex = 68;
             btnImportDH.Text = "Import";
             btnImportDH.UseVisualStyleBackColor = false;
@@ -176,10 +181,10 @@
             // btnExportDH
             // 
             btnExportDH.BackColor = Color.AliceBlue;
-            btnExportDH.Location = new Point(980, 849);
+            btnExportDH.Location = new Point(853, 861);
             btnExportDH.Margin = new Padding(3, 4, 3, 4);
             btnExportDH.Name = "btnExportDH";
-            btnExportDH.Size = new Size(129, 74);
+            btnExportDH.Size = new Size(115, 69);
             btnExportDH.TabIndex = 67;
             btnExportDH.Text = "Export";
             btnExportDH.UseVisualStyleBackColor = false;
@@ -188,10 +193,10 @@
             // btnXoaDH
             // 
             btnXoaDH.BackColor = Color.Lavender;
-            btnXoaDH.Location = new Point(1202, 724);
+            btnXoaDH.Location = new Point(1021, 724);
             btnXoaDH.Margin = new Padding(3, 4, 3, 4);
             btnXoaDH.Name = "btnXoaDH";
-            btnXoaDH.Size = new Size(129, 72);
+            btnXoaDH.Size = new Size(126, 61);
             btnXoaDH.TabIndex = 66;
             btnXoaDH.Text = "Xóa";
             btnXoaDH.UseVisualStyleBackColor = false;
@@ -200,10 +205,11 @@
             // btnSuaDH
             // 
             btnSuaDH.BackColor = Color.Lavender;
-            btnSuaDH.Location = new Point(980, 724);
+            btnSuaDH.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSuaDH.Location = new Point(853, 724);
             btnSuaDH.Margin = new Padding(3, 4, 3, 4);
             btnSuaDH.Name = "btnSuaDH";
-            btnSuaDH.Size = new Size(129, 72);
+            btnSuaDH.Size = new Size(115, 61);
             btnSuaDH.TabIndex = 65;
             btnSuaDH.Text = "Sửa";
             btnSuaDH.UseVisualStyleBackColor = false;
@@ -212,11 +218,12 @@
             // btnNhapDH
             // 
             btnNhapDH.BackColor = Color.LightSlateGray;
+            btnNhapDH.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnNhapDH.ForeColor = SystemColors.ButtonHighlight;
-            btnNhapDH.Location = new Point(759, 724);
+            btnNhapDH.Location = new Point(682, 724);
             btnNhapDH.Margin = new Padding(3, 4, 3, 4);
             btnNhapDH.Name = "btnNhapDH";
-            btnNhapDH.Size = new Size(136, 72);
+            btnNhapDH.Size = new Size(125, 61);
             btnNhapDH.TabIndex = 69;
             btnNhapDH.Text = "Nhập";
             btnNhapDH.UseVisualStyleBackColor = false;
@@ -225,20 +232,49 @@
             // btnRefreshDH
             // 
             btnRefreshDH.BackColor = SystemColors.Highlight;
+            btnRefreshDH.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefreshDH.ForeColor = SystemColors.ButtonHighlight;
-            btnRefreshDH.Location = new Point(766, 849);
+            btnRefreshDH.Location = new Point(682, 861);
             btnRefreshDH.Margin = new Padding(3, 4, 3, 4);
             btnRefreshDH.Name = "btnRefreshDH";
-            btnRefreshDH.Size = new Size(129, 74);
+            btnRefreshDH.Size = new Size(125, 69);
             btnRefreshDH.TabIndex = 72;
             btnRefreshDH.Text = "Refresh";
             btnRefreshDH.UseVisualStyleBackColor = false;
             btnRefreshDH.Click += btnRefreshDH_Click;
             // 
+            // btnMaHoa
+            // 
+            btnMaHoa.BackColor = Color.RosyBrown;
+            btnMaHoa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMaHoa.ForeColor = SystemColors.ButtonHighlight;
+            btnMaHoa.Location = new Point(1202, 724);
+            btnMaHoa.Name = "btnMaHoa";
+            btnMaHoa.Size = new Size(129, 61);
+            btnMaHoa.TabIndex = 73;
+            btnMaHoa.Text = "Mã hóa";
+            btnMaHoa.UseVisualStyleBackColor = false;
+            btnMaHoa.Click += btnMaHoa_Click;
+            // 
+            // btnGiaiMa
+            // 
+            btnGiaiMa.BackColor = Color.RosyBrown;
+            btnGiaiMa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGiaiMa.ForeColor = SystemColors.ButtonHighlight;
+            btnGiaiMa.Location = new Point(1202, 861);
+            btnGiaiMa.Name = "btnGiaiMa";
+            btnGiaiMa.Size = new Size(129, 69);
+            btnGiaiMa.TabIndex = 74;
+            btnGiaiMa.Text = "Giải mã";
+            btnGiaiMa.UseVisualStyleBackColor = false;
+            btnGiaiMa.Click += btnGiaiMa_Click;
+            // 
             // QLOrder
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnGiaiMa);
+            Controls.Add(btnMaHoa);
             Controls.Add(btnRefreshDH);
             Controls.Add(btnNhapDH);
             Controls.Add(btnImportDH);
@@ -282,5 +318,7 @@
         private DataGridViewTextBoxColumn tenTrangThai;
         private DataGridViewTextBoxColumn moTa;
         private Button btnRefreshDH;
+        private Button btnMaHoa;
+        private Button btnGiaiMa;
     }
 }

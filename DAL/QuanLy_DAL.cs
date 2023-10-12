@@ -86,46 +86,6 @@ namespace DAL
                 existingDH.MoTa = or.MoTa;
             }
         }
-
-        //public void AddOrderFromApi()
-        //{
-        //    List<Orders> orders = GetListDHFromAPI();
-
-        //    if (orders != null)
-        //    {
-        //        foreach (Orders order in orders)
-        //        {
-        //            AddOrder(order);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Không thể lấy dữ liệu từ API.");
-        //    }
-        //}
-        //public void AddOrder(Orders order)
-        //{
-        //    // Kết nối đến cơ sở dữ liệu
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-
-        //        // Tạo câu truy vấn SQL để thêm đơn hàng
-        //        string query = "INSERT INTO Orders (MaTrangThaiDonHang, TenTrangThai, MoTa) VALUES (@OrderStatusID, @StatusName, @Describe)";
-
-        //        // Tạo đối tượng SqlCommand
-        //        using (SqlCommand cmd = new SqlCommand(query, connection))
-        //        {
-        //            // Thay thế các tham số trong câu truy vấn với giá trị tương ứng từ đối tượng Orders
-        //            cmd.Parameters.AddWithValue("@OrderStatusID", order.MaTrangThaiDonHang);
-        //            cmd.Parameters.AddWithValue("@StatusName", order.TenTrangThai);
-        //            cmd.Parameters.AddWithValue("@Describe", order.MoTa);
-
-        //            // Thực thi câu truy vấn
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-
+        
     }
 }

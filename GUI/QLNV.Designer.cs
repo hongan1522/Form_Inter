@@ -167,6 +167,7 @@
             txtDC.Name = "txtDC";
             txtDC.Size = new Size(216, 39);
             txtDC.TabIndex = 59;
+            txtDC.KeyDown += QLNV_KeyDown;
             // 
             // label5
             // 
@@ -185,6 +186,7 @@
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(216, 39);
             txtSDT.TabIndex = 58;
+            txtSDT.KeyDown += QLNV_KeyDown;
             // 
             // label4
             // 
@@ -203,6 +205,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(216, 39);
             txtEmail.TabIndex = 57;
+            txtEmail.KeyDown += QLNV_KeyDown;
             // 
             // dtpNS
             // 
@@ -242,6 +245,7 @@
             txtTenNV.Name = "txtTenNV";
             txtTenNV.Size = new Size(216, 39);
             txtTenNV.TabIndex = 55;
+            txtTenNV.KeyDown += QLNV_KeyDown;
             // 
             // label1
             // 
@@ -260,6 +264,7 @@
             txtMaNV.Name = "txtMaNV";
             txtMaNV.Size = new Size(216, 39);
             txtMaNV.TabIndex = 54;
+            txtMaNV.KeyDown += QLNV_KeyDown;
             // 
             // btnImport
             // 
@@ -349,7 +354,6 @@
             Name = "QLNV";
             Size = new Size(1395, 969);
             Load += QLNV_Load;
-            KeyDown += QLNV_KeyDown;
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvNV).EndInit();
             ResumeLayout(false);
