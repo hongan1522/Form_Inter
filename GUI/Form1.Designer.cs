@@ -57,7 +57,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1280, 767);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Quản lý nhân viên";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // qlnv1
@@ -71,12 +71,12 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(qlOrder1);
-            tabPage2.Location = new Point(8, 46);
+            tabPage2.Location = new Point(8, 39);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1280, 760);
+            tabPage2.Size = new Size(1280, 767);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Quản lý đơn hàng";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // qlOrder1
