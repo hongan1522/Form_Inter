@@ -6,9 +6,7 @@
 
 ![QLDH](https://github.com/hongan1522/Form_NV/assets/95673805/d8b5f965-1b21-4382-98bf-8fec3d6254e2)
 
-**Chức năng chính**
-
-  Page Quản lý nhân viên:
+  Chức năng chính Page Quản lý nhân viên:
 - Nhập nhân viên
 - Xóa nhân viên
 - Sửa nhân viên
@@ -16,7 +14,7 @@
 - Import dữ liệu nhân viên từ file Excel
 - Refesh lại các text box
 
-  Page Quản lý đơn hàng:
+  Chức năng chính Page Quản lý đơn hàng:
 - Nhập đơn hàng
 - Xóa đơn hàng
 - Sửa đơn hàng
