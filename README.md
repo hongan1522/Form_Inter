@@ -14,7 +14,7 @@
 - Import dữ liệu nhân viên từ file Excel
 - Refesh lại các text box
 
-  Chức năng chính Page Quản lý đơn hàng:
+Chức năng chính Page Quản lý đơn hàng:
 - Nhập đơn hàng
 - Xóa đơn hàng
 - Sửa đơn hàng
