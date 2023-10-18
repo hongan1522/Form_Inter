@@ -2,7 +2,7 @@
 
 Đây là báo cáo thực tập tại Gonsa. Đây là kết quả sau khoảng thời gian làm việc của tôi khi được giao task.
 
-**Form1**(h3)
+## **Form1**
 
 Page Quản lý nhân viên
 
