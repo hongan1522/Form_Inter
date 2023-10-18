@@ -39,3 +39,7 @@ Chức năng chính Page Quản lý đơn hàng:
 - Refesh lại các text box
 - Mã hóa (AES)  dữ liệu đơn hàng ra file config với key là Mã, value là Tên
 - Giải mã dữ liệu đơn hàng từ file config và save dữ liệu đã giải mã ra file text
+
+## **CodeForm**
+
+
