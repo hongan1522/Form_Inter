@@ -12,16 +12,14 @@ namespace GUI
 {
     public partial class CodeForm : Form
     {
-        private GUI.uc_NhanVien uc_NV = new uc_NhanVien();
+        private uc_NhanVien uc_NV = new uc_NhanVien();
         private TableLayoutPanel tlpForm = new TableLayoutPanel();
         public CodeForm()
         {
-
-
             InitializeComponent();
             Size = new Size(1522, 950);
+
             this.Controls.Add(tlpForm);
-            
             tlpForm.Controls.Add(uc_NV, 0, 0);
             tlpForm.Name = "tlpForm";
             tlpForm.Dock = DockStyle.Fill;
@@ -34,6 +32,9 @@ namespace GUI
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             uc_NV.Dock = DockStyle.Fill;
+
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
     }
 }

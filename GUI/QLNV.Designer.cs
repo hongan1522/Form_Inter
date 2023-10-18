@@ -268,7 +268,7 @@
             // 
             // btnImport
             // 
-            btnImport.BackColor = Color.Tan;
+            btnImport.BackColor = Color.AliceBlue;
             btnImport.Location = new Point(745, 868);
             btnImport.Margin = new Padding(3, 4, 3, 4);
             btnImport.Name = "btnImport";

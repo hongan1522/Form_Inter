@@ -323,30 +323,28 @@ namespace WindowsFormsApp1
             {
                 isEditing = true;
                 txtMaNV.Enabled = false;
-            }
-            else
-            {
-                // Lấy dữ liệu từ các trường
-                string maNhanVien = txtMaNV.Text;
-                string tenNhanVien = txtTenNV.Text;
-                DateTime ngaySinh = dtpNS.Value;
-                string email = txtEmail.Text;
-                string sdt = txtSDT.Text;
-                string diaChi = txtDC.Text;
-
-                // Tạo đối tượng NhanVien từ dữ liệu vừa lấy
-                NhanVien nv = new NhanVien()
-                {
-                    MaNhanVien = maNhanVien,
-                    TenNhanVien = tenNhanVien,
-                    NgaySinh = ngaySinh,
-                    Email = email,
-                    SDT = sdt,
-                    DiaChi = diaChi
-                };
 
                 if (isEditing)
                 {
+                    // Lấy dữ liệu từ các trường
+                    string maNhanVien = txtMaNV.Text;
+                    string tenNhanVien = txtTenNV.Text;
+                    DateTime ngaySinh = dtpNS.Value;
+                    string email = txtEmail.Text;
+                    string sdt = txtSDT.Text;
+                    string diaChi = txtDC.Text;
+
+                    // Tạo đối tượng NhanVien từ dữ liệu vừa lấy
+                    NhanVien nv = new NhanVien()
+                    {
+                        MaNhanVien = maNhanVien,
+                        TenNhanVien = tenNhanVien,
+                        NgaySinh = ngaySinh,
+                        Email = email,
+                        SDT = sdt,
+                        DiaChi = diaChi
+                    };
+
                     if (IsNVValid(nv))
                     {
                         bllNV.UpdateNV(nv); // Cập nhật dữ liệu vào CSDL

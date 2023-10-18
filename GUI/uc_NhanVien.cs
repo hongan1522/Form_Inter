@@ -38,7 +38,7 @@ namespace GUI
         private Button btnAdd = new Button();
         private Button btnUpdate = new Button();
         private Button btnDelete = new Button();
-        private Button btnRefresh = new Button();
+        public Button btnRefresh = new Button();
         private Button btnImport = new Button();
         private Button btnExport = new Button();
 
@@ -59,7 +59,6 @@ namespace GUI
             tlp_ucNV.Margin = new Padding(3, 4, 3, 4);
             tlp_ucNV.Name = "tlp_ucNV";
             tlp_ucNV.RowCount = 1;
-            //tlp_ucNV.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tlp_ucNV.Size = new Size(1383, 630);
             tlp_ucNV.TabIndex = 0;
             tlp_ucNV.Dock = DockStyle.Top;
@@ -566,7 +565,7 @@ namespace GUI
             }
         }
 
-        private bool isEditing;
+        private bool isEditing; //biến kiểm tra trạng thái sửa đổi
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             if (!isEditing)
@@ -574,104 +573,45 @@ namespace GUI
                 isEditing = true;
                 txtMaNhanVien.Enabled = false;
 
-                DataGridViewRow selectedRow = dgvNV.CurrentRow;
-                if (selectedRow != null)
+                if (isEditing)
                 {
-                    txtMaNhanVien.Text = selectedRow.Cells["MaNV"].Value.ToString();
-                    txtTenNhanVien.Text = selectedRow.Cells["TenNV"].Value.ToString();
-                    dtpNgaySinh.Value = Convert.ToDateTime(selectedRow.Cells["NgaySinh"].Value);
-                    txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-                    txtsdt.Text = selectedRow.Cells["SDT"].Value.ToString();
-                    txtDC.Text = selectedRow.Cells["DiaChi"].Value.ToString();
-                }
-            }
-            else
-            {
-                string maNhanVien = txtMaNhanVien.Text;
-                string tenNhanVien = txtTenNhanVien.Text;
-                DateTime ngaySinh = dtpNgaySinh.Value;
-                string email = txtEmail.Text;
-                string sdt = txtsdt.Text;
-                string diaChi = txtDC.Text;
+                    // Lấy dữ liệu từ các trường
+                    string maNhanVien = txtMaNhanVien.Text;
+                    string tenNhanVien = txtTenNhanVien.Text;
+                    DateTime ngaySinh = dtpNgaySinh.Value;
+                    string email = txtEmail.Text;
+                    string sdt = txtsdt.Text;
+                    string diaChi = txtDC.Text;
 
-                NhanVien nv = new NhanVien()
-                {
-                    MaNhanVien = maNhanVien,
-                    TenNhanVien = tenNhanVien,
-                    NgaySinh = ngaySinh,
-                    Email = email,
-                    SDT = sdt,
-                    DiaChi = diaChi
-                };
+                    // Tạo đối tượng NhanVien từ dữ liệu vừa lấy
+                    NhanVien nv = new NhanVien()
+                    {
+                        MaNhanVien = maNhanVien,
+                        TenNhanVien = tenNhanVien,
+                        NgaySinh = ngaySinh,
+                        Email = email,
+                        SDT = sdt,
+                        DiaChi = diaChi
+                    };
 
-                if (IsNVValid(nv))
-                {
-                    bllNV.UpdateNV(nv);
-                    LoadListNV();
-                    Clear();
-                    MessageBox.Show("Cập nhật thành công!");
+                    if (IsNVValid(nv))
+                    {
+                        bllNV.UpdateNV(nv); // Cập nhật dữ liệu vào CSDL
+                        LoadListNV(); // Nạp lại danh sách nhân viên
+                        Clear();
 
-                    isEditing = false;
+                        MessageBox.Show("Cập nhật thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
+                    }
+
+                    isEditing = false; // Chuyển trạng thái về là không sửa đổi
                     txtMaNhanVien.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
                 }
             }
         }
-        //private void BtnUpdate_Click(object sender, EventArgs e)
-        //{
-        //    // Kiểm tra xem người dùng đang trong trạng thái sửa đổi hay không
-        //    if (!isEditing)
-        //    {
-        //        isEditing = true; // Chuyển sang trạng thái sửa đổi
-
-        //        // Disable các trường dữ liệu không muốn người dùng sửa đổi
-        //        // Ví dụ: txtMaNhanVien.Enabled = false;
-        //    }
-        //    else
-        //    {
-        //        // Lấy dữ liệu từ các trường
-        //        string maNhanVien = txtMaNhanVien.Text;
-        //        string tenNhanVien = txtTenNhanVien.Text;
-        //        DateTime ngaySinh = dtpNgaySinh.Value;
-        //        string email = txtEmail.Text;
-        //        string sdt = txtsdt.Text;
-        //        string diaChi = txtDC.Text;
-
-        //        // Tạo đối tượng NhanVien từ dữ liệu vừa lấy
-        //        NhanVien nv = new NhanVien()
-        //        {
-        //            MaNhanVien = maNhanVien,
-        //            TenNhanVien = tenNhanVien,
-        //            NgaySinh = ngaySinh,
-        //            Email = email,
-        //            SDT = sdt,
-        //            DiaChi = diaChi
-        //        };
-
-        //        if (isEditing)
-        //        {
-        //            if (IsNVValid(nv))
-        //            {
-        //                bllNV.UpdateNV(nv); // Cập nhật dữ liệu vào CSDL
-        //                LoadListNV(); // Nạp lại danh sách nhân viên
-        //                Clear(); // Xóa các trường dữ liệu sau khi cập nhật thành công
-
-        //                MessageBox.Show("Cập nhật thành công!");
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
-        //            }
-
-        //            isEditing = false; // Chuyển trạng thái về là không sửa đổi
-        //                               // txtMaNhanVien.Enabled = true; // Khi cần, có thể enable lại các trường bị disable
-        //        }
-        //    }
-        //}
-
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (dgvNV.SelectedCells.Count == 0)
