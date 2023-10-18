@@ -42,4 +42,6 @@ Chức năng chính Page Quản lý đơn hàng:
 
 ## **CodeForm**
 
+![Ảnh chụp màn hình 2023-10-18 110958](https://github.com/hongan1522/Form_NV/assets/95673805/5655486f-59e7-452f-b459-e097b224a337)
+
 
