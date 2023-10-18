@@ -2,6 +2,7 @@
 
 Đây là báo cáo thực tập tại Gonsa. Đây là kết quả sau khoảng thời gian làm việc của tôi khi được giao task.
 
+
 Page Quản lý nhân viên
 ![QLNV](https://github.com/hongan1522/Form_NV/assets/95673805/da414a50-a8a4-47b6-a79e-a21c496acf83)
                                       
