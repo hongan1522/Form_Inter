@@ -46,7 +46,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1296, 814);
+            tabControl1.Size = new Size(1316, 814);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -55,14 +55,14 @@
             tabPage1.Location = new Point(8, 39);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1280, 767);
+            tabPage1.Size = new Size(1300, 767);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Quản lý nhân viên";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // qlnv1
             // 
-            qlnv1.Location = new Point(17, 23);
+            qlnv1.Location = new Point(6, 7);
             qlnv1.Margin = new Padding(3, 4, 3, 4);
             qlnv1.Name = "qlnv1";
             qlnv1.Size = new Size(1271, 855);
@@ -91,11 +91,11 @@
             // 
             AutoScaleDimensions = new SizeF(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(1296, 814);
+            ClientSize = new Size(1316, 814);
             Controls.Add(tabControl1);
             Font = new Font("Microsoft Sans Serif", 7.875F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form1";

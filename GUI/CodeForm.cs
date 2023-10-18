@@ -32,7 +32,7 @@ namespace GUI
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             uc_NV.Dock = DockStyle.Fill;
-
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
         }
