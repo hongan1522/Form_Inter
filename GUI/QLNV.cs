@@ -80,7 +80,6 @@ namespace WindowsFormsApp1
 
             LoadListNV();
             Clear();
-
         }
         private void LoadListNV()
         {
@@ -192,6 +191,20 @@ namespace WindowsFormsApp1
             }
             return false;
         }
+        private string AutoGenerateMaNV()
+        {
+            // Lấy danh sách mã nhân viên hiện có
+            List<string> existingMaNVs = listNV.Select(nv => nv.MaNhanVien).ToList();
+
+            // Tìm mã nhân viên lớn nhất
+            string maxMaNV = existingMaNVs.OrderByDescending(maNV => int.Parse(maNV.Substring(2))).FirstOrDefault();
+
+            // Tạo mã mới dựa trên mã lớn nhất
+            int newMaNVNumber = int.Parse(maxMaNV.Substring(2)) + 1;
+            string newMaNV = "NV" + newMaNVNumber.ToString().PadLeft(3, '0');
+
+            return newMaNV;
+        }
         private void dgvNV_SelectionChanged(object sender, EventArgs e)
         {
             DataGridViewRow dr = dgvNV.CurrentRow;
@@ -245,7 +258,8 @@ namespace WindowsFormsApp1
 
             if (!IsMaNVValidAndNotDuplicate(nv))
             {
-                errorMessages.Add("_ Mã nhân viên không hợp lệ hoặc trùng lặp.\n");
+                nv.MaNhanVien = AutoGenerateMaNV();
+                //errorMessages.Add("_ Mã nhân viên không hợp lệ hoặc trùng lặp.\n");
             }
 
             if (IsEmailDuplicate(nv))
@@ -270,7 +284,6 @@ namespace WindowsFormsApp1
                 Clear();
                 MessageBox.Show("Thêm thành công");
             }
-
         }
         private void btnXoaNV_Click(object sender, EventArgs e)
         {
@@ -310,20 +323,10 @@ namespace WindowsFormsApp1
             {
                 isEditing = true;
                 txtMaNV.Enabled = false;
-
-                DataGridViewRow selectedRow = dgvNV.CurrentRow;
-                if (selectedRow != null)
-                {
-                    txtMaNV.Text = selectedRow.Cells["MaNV"].Value.ToString();
-                    txtTenNV.Text = selectedRow.Cells["TenNV"].Value.ToString();
-                    dtpNS.Value = Convert.ToDateTime(selectedRow.Cells["NgaySinh"].Value);
-                    txtEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-                    txtSDT.Text = selectedRow.Cells["SDT"].Value.ToString();
-                    txtDC.Text = selectedRow.Cells["DiaChi"].Value.ToString();
-                }
             }
             else
             {
+                // Lấy dữ liệu từ các trường
                 string maNhanVien = txtMaNV.Text;
                 string tenNhanVien = txtTenNV.Text;
                 DateTime ngaySinh = dtpNS.Value;
@@ -331,6 +334,7 @@ namespace WindowsFormsApp1
                 string sdt = txtSDT.Text;
                 string diaChi = txtDC.Text;
 
+                // Tạo đối tượng NhanVien từ dữ liệu vừa lấy
                 NhanVien nv = new NhanVien()
                 {
                     MaNhanVien = maNhanVien,
@@ -341,19 +345,23 @@ namespace WindowsFormsApp1
                     DiaChi = diaChi
                 };
 
-                if (IsNVValid(nv))
+                if (isEditing)
                 {
-                    bllNV.UpdateNV(nv);
-                    LoadListNV();
-                    Clear();
-                    MessageBox.Show("Cập nhật thành công!");
+                    if (IsNVValid(nv))
+                    {
+                        bllNV.UpdateNV(nv); // Cập nhật dữ liệu vào CSDL
+                        LoadListNV(); // Nạp lại danh sách nhân viên
+                        Clear();
 
-                    isEditing = false;
+                        MessageBox.Show("Cập nhật thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
+                    }
+
+                    isEditing = false; // Chuyển trạng thái về là không sửa đổi
                     txtMaNV.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật không thành công. Vui lòng kiểm tra lại thông tin.");
                 }
             }
         }

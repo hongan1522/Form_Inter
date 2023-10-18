@@ -62,7 +62,7 @@
             // 
             // qlnv1
             // 
-            qlnv1.Location = new Point(0, 0);
+            qlnv1.Location = new Point(17, 23);
             qlnv1.Margin = new Padding(3, 4, 3, 4);
             qlnv1.Name = "qlnv1";
             qlnv1.Size = new Size(1271, 855);
@@ -71,10 +71,10 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(qlOrder1);
-            tabPage2.Location = new Point(8, 39);
+            tabPage2.Location = new Point(8, 46);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1280, 767);
+            tabPage2.Size = new Size(1280, 760);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Quản lý đơn hàng";
             tabPage2.UseVisualStyleBackColor = true;
