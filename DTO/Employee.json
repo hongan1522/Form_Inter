@@ -1,0 +1,74 @@
+[
+  {
+    "MaNhanVien": "NV1",
+    "TenNhanVien": "Nguyễn Văn A",
+    "NgaySinh": "1990-10-01T00:00:00",
+    "Email": "nguyenvana@gmail.com",
+    "SDT": "0111111111",
+    "DiaChi": "123 Đường ABC, Quận ABC, TPHCM"
+  },
+  {
+    "MaNhanVien": "NV2",
+    "TenNhanVien": "Trần Thị B",
+    "NgaySinh": "1995-05-20T00:00:00",
+    "Email": "tranthib@gmail.com",
+    "SDT": "0111111112",
+    "DiaChi": "456 Đường DEF, Quận DEF, TPHCM"
+  },
+  {
+    "MaNhanVien": "NV3",
+    "TenNhanVien": "Phạm Nguyễn Thị C",
+    "NgaySinh": "1988-08-08T00:00:00",
+    "Email": "phamnguyenthic@gmail.com",
+    "SDT": "0111111113",
+    "DiaChi": "789 Đường GHI, Quận GHI, TPHCM"
+  },
+  {
+    "MaNhanVien": "NV4",
+    "TenNhanVien": "Võ Lê Văn D",
+    "NgaySinh": "1993-03-10T00:00:00",
+    "Email": "volevand@gmail.com",
+    "SDT": "0111111114",
+    "DiaChi": "111 Đường XYZ, Quận XYZ, TPHCM"
+  },
+  {
+    "MaNhanVien": "NV5",
+    "TenNhanVien": "Nguyễn Văn A",
+    "NgaySinh": "1990-01-15T00:00:00",
+    "Email": "nguyenvana@gmail.com",
+    "SDT": "0123456789",
+    "DiaChi": "123 Đường ABC, Quận XYZ"
+  },
+  {
+    "MaNhanVien": "NV6",
+    "TenNhanVien": "Trần Thị B",
+    "NgaySinh": "1995-05-20T00:00:00",
+    "Email": "tranthib@gmail.com",
+    "SDT": "0987654321",
+    "DiaChi": "456 Đường XYZ, Quận ABC"
+  },
+  {
+    "MaNhanVien": "NV7",
+    "TenNhanVien": "Nguyễn Văn A",
+    "NgaySinh": "1990-01-15T00:00:00",
+    "Email": "nguyenvana@gmail.com",
+    "SDT": "0123456789",
+    "DiaChi": "123 Đường ABC, Quận XYZ"
+  },
+  {
+    "MaNhanVien": "NV8",
+    "TenNhanVien": "Trần Thị B",
+    "NgaySinh": "1995-05-20T00:00:00",
+    "Email": "tranthib@gmail.com",
+    "SDT": "0987654321",
+    "DiaChi": "456 Đường XYZ, Quận ABC"
+  },
+  {
+    "MaNhanVien": "NV9",
+    "TenNhanVien": "Trần Thị B",
+    "NgaySinh": "1995-05-20T00:00:00",
+    "Email": "tranthib@gmail.com",
+    "SDT": "0111111112",
+    "DiaChi": "456 Đường DEF, Quận DEF, TPHCM"
+  }
+]
