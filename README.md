@@ -6,7 +6,8 @@
 
 Page Quản lý nhân viên
 
-![QLNV](https://github.com/hongan1522/Form_NV/assets/95673805/da414a50-a8a4-47b6-a79e-a21c496acf83)
+![Ảnh chụp màn hình 2023-10-23 083244](https://github.com/hongan1522/Form_NV/assets/95673805/ac7407e4-3144-4667-b474-6a24655c509e)
+
                                       
 Page Quản lý đơn hàng
 
@@ -22,7 +23,7 @@ Page Quản lý đơn hàng khi mã hóa
 
 ![Ảnh chụp màn hình 2023-10-18 105724](https://github.com/hongan1522/Form_NV/assets/95673805/a2fa3145-f9aa-415f-a317-cac07a8414ec)
 
-  Chức năng chính Page Quản lý nhân viên:
+  Chức năng chính Page Quản lý nhân viên. Khi cập nhật thêm, sửa, xóa sẽ lưu dữ liệu vào file json và cập nhật lại mã cho đúng.
 - Nhập nhân viên
 - Xóa nhân viên
 - Sửa nhân viên
@@ -42,7 +43,7 @@ Chức năng chính Page Quản lý đơn hàng:
 
 ## **CodeForm**
 
-Đây là Form code design thủ công các thành phần. Khi cập nhật thêm, sửa, xóa sẽ lưu dữ liệu vào file json và cập nhật lại mã cho đúng.
+Đây là Form code design thủ công các thành phần. .
 
 ![Ảnh chụp màn hình 2023-10-18 110958](https://github.com/hongan1522/Form_NV/assets/95673805/5655486f-59e7-452f-b459-e097b224a337)
 
