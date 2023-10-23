@@ -141,10 +141,10 @@
             // 
             btnRefresh.BackColor = SystemColors.Highlight;
             btnRefresh.ForeColor = SystemColors.ButtonHighlight;
-            btnRefresh.Location = new Point(1025, 868);
+            btnRefresh.Location = new Point(965, 857);
             btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(129, 68);
+            btnRefresh.Size = new Size(129, 72);
             btnRefresh.TabIndex = 71;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
@@ -154,7 +154,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(656, 790);
+            label6.Location = new Point(673, 788);
             label6.Name = "label6";
             label6.Size = new Size(88, 24);
             label6.TabIndex = 70;
@@ -162,10 +162,10 @@
             // 
             // txtDC
             // 
-            txtDC.Location = new Point(848, 781);
+            txtDC.Location = new Point(865, 779);
             txtDC.Margin = new Padding(3, 4, 3, 4);
             txtDC.Name = "txtDC";
-            txtDC.Size = new Size(216, 39);
+            txtDC.Size = new Size(432, 39);
             txtDC.TabIndex = 59;
             txtDC.KeyDown += QLNV_KeyDown;
             // 
@@ -173,7 +173,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(656, 733);
+            label5.Location = new Point(673, 731);
             label5.Name = "label5";
             label5.Size = new Size(57, 24);
             label5.TabIndex = 69;
@@ -181,10 +181,10 @@
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(848, 724);
+            txtSDT.Location = new Point(865, 722);
             txtSDT.Margin = new Padding(3, 4, 3, 4);
             txtSDT.Name = "txtSDT";
-            txtSDT.Size = new Size(216, 39);
+            txtSDT.Size = new Size(432, 39);
             txtSDT.TabIndex = 58;
             txtSDT.KeyDown += QLNV_KeyDown;
             // 
@@ -192,7 +192,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 7.875F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(656, 675);
+            label4.Location = new Point(673, 673);
             label4.Name = "label4";
             label4.Size = new Size(72, 24);
             label4.TabIndex = 68;
@@ -200,10 +200,10 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(848, 669);
+            txtEmail.Location = new Point(865, 667);
             txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(216, 39);
+            txtEmail.Size = new Size(432, 39);
             txtEmail.TabIndex = 57;
             txtEmail.KeyDown += QLNV_KeyDown;
             // 
@@ -215,7 +215,7 @@
             dtpNS.Location = new Point(223, 777);
             dtpNS.Margin = new Padding(3, 4, 3, 4);
             dtpNS.Name = "dtpNS";
-            dtpNS.Size = new Size(216, 39);
+            dtpNS.Size = new Size(299, 39);
             dtpNS.TabIndex = 56;
             // 
             // label3
@@ -243,7 +243,7 @@
             txtTenNV.Location = new Point(223, 724);
             txtTenNV.Margin = new Padding(3, 4, 3, 4);
             txtTenNV.Name = "txtTenNV";
-            txtTenNV.Size = new Size(216, 39);
+            txtTenNV.Size = new Size(299, 39);
             txtTenNV.TabIndex = 55;
             txtTenNV.KeyDown += QLNV_KeyDown;
             // 
@@ -259,20 +259,20 @@
             // 
             // txtMaNV
             // 
-            txtMaNV.Location = new Point(223, 669);
+            txtMaNV.Location = new Point(223, 663);
             txtMaNV.Margin = new Padding(3, 4, 3, 4);
             txtMaNV.Name = "txtMaNV";
-            txtMaNV.Size = new Size(216, 39);
+            txtMaNV.Size = new Size(299, 39);
             txtMaNV.TabIndex = 54;
             txtMaNV.KeyDown += QLNV_KeyDown;
             // 
             // btnImport
             // 
             btnImport.BackColor = Color.AliceBlue;
-            btnImport.Location = new Point(745, 868);
+            btnImport.Location = new Point(721, 857);
             btnImport.Margin = new Padding(3, 4, 3, 4);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(136, 61);
+            btnImport.Size = new Size(136, 72);
             btnImport.TabIndex = 64;
             btnImport.Text = "Import";
             btnImport.UseVisualStyleBackColor = false;
@@ -281,10 +281,10 @@
             // btnExport
             // 
             btnExport.BackColor = Color.AliceBlue;
-            btnExport.Location = new Point(506, 868);
+            btnExport.Location = new Point(487, 857);
             btnExport.Margin = new Padding(3, 4, 3, 4);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(136, 61);
+            btnExport.Size = new Size(136, 72);
             btnExport.TabIndex = 63;
             btnExport.Text = "Export";
             btnExport.UseVisualStyleBackColor = false;
@@ -294,7 +294,7 @@
             // 
             btnNhapNV.BackColor = Color.LightSlateGray;
             btnNhapNV.ForeColor = SystemColors.ButtonHighlight;
-            btnNhapNV.Location = new Point(1181, 712);
+            btnNhapNV.Location = new Point(1189, 857);
             btnNhapNV.Margin = new Padding(3, 4, 3, 4);
             btnNhapNV.Name = "btnNhapNV";
             btnNhapNV.Size = new Size(136, 72);
@@ -306,10 +306,10 @@
             // btnXoaNV
             // 
             btnXoaNV.BackColor = Color.Lavender;
-            btnXoaNV.Location = new Point(277, 868);
+            btnXoaNV.Location = new Point(259, 857);
             btnXoaNV.Margin = new Padding(3, 4, 3, 4);
             btnXoaNV.Name = "btnXoaNV";
-            btnXoaNV.Size = new Size(129, 61);
+            btnXoaNV.Size = new Size(129, 72);
             btnXoaNV.TabIndex = 62;
             btnXoaNV.Text = "Xóa";
             btnXoaNV.UseVisualStyleBackColor = false;
@@ -318,10 +318,10 @@
             // btnSuaNV
             // 
             btnSuaNV.BackColor = Color.Lavender;
-            btnSuaNV.Location = new Point(62, 868);
+            btnSuaNV.Location = new Point(43, 857);
             btnSuaNV.Margin = new Padding(3, 4, 3, 4);
             btnSuaNV.Name = "btnSuaNV";
-            btnSuaNV.Size = new Size(129, 61);
+            btnSuaNV.Size = new Size(129, 72);
             btnSuaNV.TabIndex = 61;
             btnSuaNV.Text = "Sửa";
             btnSuaNV.UseVisualStyleBackColor = false;

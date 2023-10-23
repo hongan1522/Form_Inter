@@ -8,6 +8,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Globalization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Newtonsoft.Json;
 
 namespace WindowsFormsApp1
 {
@@ -22,68 +23,48 @@ namespace WindowsFormsApp1
             bllNV = new QuanLy_BLL();
             dgvNV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvNV.AutoGenerateColumns = false;
-            AddDataSample();
+            LoadDataFromJsonFile("C:\\Users\\MyPC\\Desktop\\Form_NV\\DTO\\Employee.json");
             LoadListNV();
         }
         private void QLNV_Load(object sender, EventArgs e)
         {
             this.Size = new System.Drawing.Size(1271, 855);
         }
-        private void AddDataSample()
+        private void LoadDataFromJsonFile(string filePath)
         {
-            dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            List<NhanVien> listNVMau = new()
+            if (File.Exists(filePath))
             {
-                new NhanVien()
+                string jsonContent = File.ReadAllText(filePath);
+
+                List<NhanVien> listNVMau = JsonConvert.DeserializeObject<List<NhanVien>>(jsonContent);
+
+                foreach (NhanVien nhanVienMau in listNVMau)
                 {
-                    MaNhanVien = "NV1",
-                    TenNhanVien = "Nguyễn Văn A",
-                    NgaySinh = new DateTime(1990, 10, 01),
-                    Email = "nguyenvana@gmail.com",
-                    SDT = "0111111111",
-                    DiaChi = "123 Đường ABC, Quận ABC, TPHCM"
-                },
-                new NhanVien()
-                {
-                    MaNhanVien = "NV2",
-                    TenNhanVien = "Trần Thị B",
-                    NgaySinh = new DateTime(1995, 5, 20),
-                    Email = "tranthib@gmail.com",
-                    SDT = "0111111112",
-                    DiaChi = "456 Đường DEF, Quận DEF, TPHCM"
-                },
-                new NhanVien()
-                {
-                    MaNhanVien = "NV3",
-                    TenNhanVien = "Phạm Nguyễn Thị C",
-                    NgaySinh = new DateTime(1988, 8, 8),
-                    Email = "phamnguyenthic@gmail.com",
-                    SDT = "0111111113",
-                    DiaChi = "789 Đường GHI, Quận GHI, TPHCM"
-                },
-                new NhanVien()
-                {
-                    MaNhanVien = "NV4",
-                    TenNhanVien = "Võ Lê Văn D",
-                    NgaySinh = new DateTime(1993, 3, 10),
-                    Email = "volevand@gmail.com",
-                    SDT = "0111111114",
-                    DiaChi = "111 Đường XYZ, Quận ZYZ, TPHCM"
+                    dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                    bllNV.AddNV(nhanVienMau);
                 }
-            };
 
-            foreach (NhanVien nhanVienMau in listNVMau)
-            {
-                bllNV.AddNV(nhanVienMau);
+                LoadListNV();
+                Clear();
             }
-
-            LoadListNV();
-            Clear();
+            else
+            {
+                MessageBox.Show("Không tìm thấy file.");
+            }
+        }
+        private void SaveDataToJsonFile(string filePath, List<NhanVien> listNhanVien)
+        {
+            string jsonContent = JsonConvert.SerializeObject(listNhanVien, Formatting.Indented);
+            File.WriteAllText(filePath, jsonContent);
+        }
+        private void SaveDataAndRefreshGrid()
+        {
+            SaveDataToJsonFile("C:\\Users\\MyPC\\Desktop\\Form_NV\\DTO\\Employee.json", listNV);
         }
         private void LoadListNV()
         {
             listNV = bllNV.GetListNV();
+            dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dgvNV.DataSource = null;
             dgvNV.DataSource = listNV;
         }

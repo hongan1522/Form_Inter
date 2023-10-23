@@ -331,9 +331,7 @@ namespace GUI
             btnDelete.Text = "Xóa";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
-
-            //AddDataSample();
-            LoadDataFromJsonFile("C:\\Users\\MyPC\\Desktop\\Form_NV\\DTO\\Employee.json");
+            AddDataSample();
             LoadListNV();
         }
         public bool IsMaNVValidAndNotDuplicate(NhanVien nhanVien)
@@ -452,88 +450,58 @@ namespace GUI
             txtsdt.Clear();
             txtDC.Clear();
         }
-        //private void AddDataSample()
-        //{
-        //    dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-        //    List<NhanVien> listNVMau = new()
-        //    {
-        //        new NhanVien()
-        //        {
-        //            MaNhanVien = "NV1",
-        //            TenNhanVien = "Nguyễn Văn A",
-        //            NgaySinh = new DateTime(1990, 10, 01),
-        //            Email = "nguyenvana@gmail.com",
-        //            SDT = "0111111111",
-        //            DiaChi = "123 Đường ABC, Quận ABC, TPHCM"
-        //        },
-        //        new NhanVien()
-        //        {
-        //            MaNhanVien = "NV2",
-        //            TenNhanVien = "Trần Thị B",
-        //            NgaySinh = new DateTime(1995, 5, 20),
-        //            Email = "tranthib@gmail.com",
-        //            SDT = "0111111112",
-        //            DiaChi = "456 Đường DEF, Quận DEF, TPHCM"
-        //        },
-        //        new NhanVien()
-        //        {
-        //            MaNhanVien = "NV3",
-        //            TenNhanVien = "Phạm Nguyễn Thị C",
-        //            NgaySinh = new DateTime(1988, 8, 8),
-        //            Email = "phamnguyenthic@gmail.com",
-        //            SDT = "0111111113",
-        //            DiaChi = "789 Đường GHI, Quận GHI, TPHCM"
-        //        },
-        //        new NhanVien()
-        //        {
-        //            MaNhanVien = "NV4",
-        //            TenNhanVien = "Võ Lê Văn D",
-        //            NgaySinh = new DateTime(1993, 3, 10),
-        //            Email = "volevand@gmail.com",
-        //            SDT = "0111111114",
-        //            DiaChi = "111 Đường XYZ, Quận ZYZ, TPHCM"
-        //        }
-        //    };
-
-        //    foreach (NhanVien nhanVienMau in listNVMau)
-        //    {
-        //        bllNV.AddNV(nhanVienMau);
-        //    }
-
-        //    LoadListNV();
-        //    Clear();
-
-        //}
-        private void LoadDataFromJsonFile(string filePath)
+        private void AddDataSample()
         {
-            if (File.Exists(filePath))
+            dgvNV.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            List<NhanVien> listNVMau = new()
             {
-                string jsonContent = File.ReadAllText(filePath);
-
-                List<NhanVien> listNVMau = JsonConvert.DeserializeObject<List<NhanVien>>(jsonContent);
-
-                foreach (NhanVien nhanVienMau in listNVMau)
+                new NhanVien()
                 {
-                    bllNV.AddNV(nhanVienMau);
+                    MaNhanVien = "NV1",
+                    TenNhanVien = "Nguyễn Văn A",
+                    NgaySinh = new DateTime(1990, 10, 01),
+                    Email = "nguyenvana@gmail.com",
+                    SDT = "0111111111",
+                    DiaChi = "123 Đường ABC, Quận ABC, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV2",
+                    TenNhanVien = "Trần Thị B",
+                    NgaySinh = new DateTime(1995, 5, 20),
+                    Email = "tranthib@gmail.com",
+                    SDT = "0111111112",
+                    DiaChi = "456 Đường DEF, Quận DEF, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV3",
+                    TenNhanVien = "Phạm Nguyễn Thị C",
+                    NgaySinh = new DateTime(1988, 8, 8),
+                    Email = "phamnguyenthic@gmail.com",
+                    SDT = "0111111113",
+                    DiaChi = "789 Đường GHI, Quận GHI, TPHCM"
+                },
+                new NhanVien()
+                {
+                    MaNhanVien = "NV4",
+                    TenNhanVien = "Võ Lê Văn D",
+                    NgaySinh = new DateTime(1993, 3, 10),
+                    Email = "volevand@gmail.com",
+                    SDT = "0111111114",
+                    DiaChi = "111 Đường XYZ, Quận ZYZ, TPHCM"
                 }
+            };
 
-                LoadListNV();
-                Clear();
-            }
-            else
+            foreach (NhanVien nhanVienMau in listNVMau)
             {
-                MessageBox.Show("Không tìm thấy file.");
+                bllNV.AddNV(nhanVienMau);
             }
-        }
-        private void SaveDataToJsonFile(string filePath, List<NhanVien> listNhanVien)
-        {
-            string jsonContent = JsonConvert.SerializeObject(listNhanVien, Formatting.Indented);
-            File.WriteAllText(filePath, jsonContent);
-        }
-        private void SaveDataAndRefreshGrid()
-        {
-            SaveDataToJsonFile("C:\\Users\\MyPC\\Desktop\\Form_NV\\DTO\\Employee.json", listNV);
+
+            LoadListNV();
+            Clear();
+
         }
         private void dgvNV_SelectionChanged(object sender, EventArgs e)
         {
@@ -605,7 +573,6 @@ namespace GUI
                 LoadListNV();
                 Clear();
                 MessageBox.Show("Thêm thành công!");
-                SaveDataAndRefreshGrid();
             }
         }
 
@@ -642,7 +609,6 @@ namespace GUI
                     {
                         bllNV.UpdateNV(nv); // Cập nhật dữ liệu vào CSDL
                         LoadListNV(); 
-                        SaveDataAndRefreshGrid();
                         Clear();
 
                         MessageBox.Show("Cập nhật thành công!");
@@ -678,7 +644,6 @@ namespace GUI
                         bllNV.RemoveNV(maNV);
                         listNV.Remove(listNV.Find(nv => nv.MaNhanVien == maNV));
                         LoadListNV();
-                        SaveDataAndRefreshGrid();
                         MessageBox.Show("Xóa nhân viên thành công.");
                     }
                     catch (Exception ex)
@@ -693,8 +658,6 @@ namespace GUI
             {
                 listNV[i].MaNhanVien = "NV" + (i + 1).ToString();
             }
-
-            SaveDataAndRefreshGrid();
         }
         private void BtnExport_Click(object sender, EventArgs e)
         {
@@ -786,7 +749,6 @@ namespace GUI
                         dgvNV.DataSource = null;
                         dgvNV.DataSource = listNV;
                         dgvNV.Refresh();
-                        SaveDataAndRefreshGrid();
                     }
                 }
             }
