@@ -8,11 +8,18 @@ Page Quản lý nhân viên
 
 ![image](https://github.com/hongan1522/Form_NV/assets/95673805/afcc859d-cace-492d-939b-ac5f46e67cd9)
 
+Page Quản lý nhân viên khi xóa
+
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/b73c6fd6-1f25-4506-93cd-2c0a1d98e190)
 
                                       
 Page Quản lý đơn hàng
 
 ![image](https://github.com/hongan1522/Form_NV/assets/95673805/a4c63451-23f3-42b4-83ac-c93771479b90)
+
+Page Quản lý đơn hàng khi xóa
+
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/d30366da-11db-4449-a629-095886bb21cf)
 
 
 Page Quản lý đơn hàng khi mã hóa
@@ -47,12 +54,12 @@ Chức năng chính Page Quản lý đơn hàng:
 
 ## **CodeForm**
 
-Đây là Form code design thủ công các thành phần. .
+Đây là FormCode code design thủ công các thành phần. 
 
 ![image](https://github.com/hongan1522/Form_NV/assets/95673805/e4466bdf-312f-47ab-8b2c-8d0e4920676e)
 
 
-Các chức năng gồm:
+Các chức năng gồm như Page Quản lý nhân viên:
 - Nhập nhân viên
 - Xóa nhân viên
 - Sửa nhân viên
