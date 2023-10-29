@@ -6,20 +6,24 @@
 
 Page Quản lý nhân viên
 
-![Ảnh chụp màn hình 2023-10-23 083244](https://github.com/hongan1522/Form_NV/assets/95673805/ac7407e4-3144-4667-b474-6a24655c509e)
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/afcc859d-cace-492d-939b-ac5f46e67cd9)
+
 
                                       
 Page Quản lý đơn hàng
 
-![QLDH](https://github.com/hongan1522/Form_NV/assets/95673805/d8b5f965-1b21-4382-98bf-8fec3d6254e2)
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/a4c63451-23f3-42b4-83ac-c93771479b90)
+
 
 Page Quản lý đơn hàng khi mã hóa
 
-![Ảnh chụp màn hình 2023-10-18 105051](https://github.com/hongan1522/Form_NV/assets/95673805/156d7699-ab8b-4f28-a644-835edeb3fb13)
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/5af05a17-eae8-44f1-aad7-ea02f4d593fb)
 
-Page Quản lý đơn hàng khi mã hóa
 
-![Ảnh chụp màn hình 2023-10-18 105609](https://github.com/hongan1522/Form_NV/assets/95673805/8050e2ec-7750-4062-9bb6-cebb48dcbdfb)
+Page Quản lý đơn hàng khi giải mã 
+
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/19f223f0-2be1-441e-b9ce-14e3b799663b)
+
 
 ![Ảnh chụp màn hình 2023-10-18 105724](https://github.com/hongan1522/Form_NV/assets/95673805/a2fa3145-f9aa-415f-a317-cac07a8414ec)
 
@@ -45,7 +49,8 @@ Chức năng chính Page Quản lý đơn hàng:
 
 Đây là Form code design thủ công các thành phần. .
 
-![Ảnh chụp màn hình 2023-10-18 110958](https://github.com/hongan1522/Form_NV/assets/95673805/5655486f-59e7-452f-b459-e097b224a337)
+![image](https://github.com/hongan1522/Form_NV/assets/95673805/e4466bdf-312f-47ab-8b2c-8d0e4920676e)
+
 
 Các chức năng gồm:
 - Nhập nhân viên
@@ -55,3 +60,10 @@ Các chức năng gồm:
 - Import dữ liệu nhân viên từ file Excel
 - Refesh lại các text box
 
+## **Cách cài đặt**
+- Copy link HTTPS trong phần Code trên Github
+- Mở git bash gõ lệnh "git clone https://github.com/hongan1522/Form_NV.git"
+- Trong project Form_NV có 2 form, muốn chạy Form1 hay CodeForm thì vào Program.cs để gõ lệnh:
+  + Chạy Form1 thì gõ "*Application.Run(new Form1());*"
+  + Chạy CodeForm1 thì gõ "*Application.Run(new CodeForm());*"   
+- Sau đó bấm chạy Form để thực hiện các phương thức
