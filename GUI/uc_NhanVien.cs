@@ -88,7 +88,9 @@ namespace GUI
             dgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNV.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvNV.MultiSelect = true;
             dgvNV.SelectionChanged += dgvNV_SelectionChanged;
+            dgvNV.RowPostPaint += dgvNV_RowPostPaint;
             //
             //  MaNhanVien
             //
@@ -517,6 +519,25 @@ namespace GUI
             }
             txtMaNhanVien.Enabled = false;
         }
+        private void dgvNV_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            // Lấy số thứ tự của hàng (bắt đầu từ 1)
+            int rowIndex = e.RowIndex + 1;
+
+            // Tạo một brush để vẽ số thứ tự
+            using (SolidBrush brush = new SolidBrush(dgvNV.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                // Chuẩn bị chuỗi số thứ tự
+                string rowIndexText = rowIndex.ToString();
+
+                // Xác định vị trí để vẽ số thứ tự trên hàng tiêu đề
+                float x = e.RowBounds.Left + 20;
+                float y = e.RowBounds.Top + (e.RowBounds.Height - e.InheritedRowStyle.Font.Height) / 2;
+
+                // Vẽ số thứ tự
+                e.Graphics.DrawString(rowIndex.ToString(), e.InheritedRowStyle.Font, brush, x, y);
+            }
+        }
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
             Clear();
@@ -631,20 +652,35 @@ namespace GUI
                 return;
             }
 
-            DataGridViewRow selectedRow = dgvNV.CurrentRow;
-            string maNV = (selectedRow.Cells["MaNV"].Value ?? string.Empty).ToString();
-            if (!string.IsNullOrEmpty(maNV))
+            List<string> selectedMaNVs = new List<string>();
+
+            foreach (DataGridViewRow selectedRow in dgvNV.SelectedRows)
             {
-                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên {maNV}?", "Xác nhận xóa?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string maNV = (selectedRow.Cells["MaNV"].Value ?? string.Empty).ToString();
+                if (!string.IsNullOrEmpty(maNV))
+                {
+                    selectedMaNVs.Add(maNV);
+                }
+            }
+
+            if (selectedMaNVs.Count > 0)
+            {
+                string selectedMaNVsText = string.Join(", ", selectedMaNVs);
+
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên có danh sách mã {selectedMaNVsText} không?", "Xác nhận xóa?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
-                        bllNV.RemoveNV(maNV);
-                        listNV.Remove(listNV.Find(nv => nv.MaNhanVien == maNV));
+                        foreach (string maNV in selectedMaNVs)
+                        {
+                            bllNV.RemoveNV(maNV);
+                            listNV.Remove(listNV.Find(nv => nv.MaNhanVien == maNV));
+                        }
+
                         LoadListNV();
-                        MessageBox.Show("Xóa nhân viên thành công.");
+                        MessageBox.Show($"Xóa nhân viên thành công. Đã xóa danh sách mã {selectedMaNVsText}.");
                     }
                     catch (Exception ex)
                     {
@@ -659,6 +695,7 @@ namespace GUI
                 listNV[i].MaNhanVien = "NV" + (i + 1).ToString();
             }
         }
+
         private void BtnExport_Click(object sender, EventArgs e)
         {
             using (var package = new ExcelPackage())

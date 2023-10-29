@@ -70,6 +70,25 @@ namespace WindowsFormsApp1
                 }
             }
         }
+        private void dgvDH_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            // Lấy số thứ tự của hàng (bắt đầu từ 1)
+            int rowIndex = e.RowIndex + 1;
+
+            // Tạo một brush để vẽ số thứ tự
+            using (SolidBrush brush = new SolidBrush(dgvDH.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                // Chuẩn bị chuỗi số thứ tự
+                string rowIndexText = rowIndex.ToString();
+
+                // Xác định vị trí để vẽ số thứ tự trên hàng tiêu đề
+                float x = e.RowBounds.Left + 20;
+                float y = e.RowBounds.Top + (e.RowBounds.Height - e.InheritedRowStyle.Font.Height) / 2;
+
+                // Vẽ số thứ tự
+                e.Graphics.DrawString(rowIndex.ToString(), e.InheritedRowStyle.Font, brush, x, y);
+            }
+        }
         private void QLOrder_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(txtMaTTDH.Text) && !string.IsNullOrWhiteSpace(txtTenTT.Text) && !string.IsNullOrWhiteSpace(txtMoTa.Text))
@@ -167,24 +186,54 @@ namespace WindowsFormsApp1
         }
         private void btnXoaDH_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xoá đơn hàng này?", "Xác Nhận Xoá", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (dgvDH.SelectedRows.Count == 0)
             {
-                deleteARow();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
+                MessageBox.Show("Vui lòng chọn đơn hàng cần xóa.");
                 return;
             }
 
+            List<string> selectedMaTTDHs = new List<string>();
+
+            foreach (DataGridViewRow selectedRow in dgvDH.SelectedRows)
+            {
+                string maTTDH = (selectedRow.Cells["MaTrangThaiDonHang"].Value ?? string.Empty).ToString();
+                if (!string.IsNullOrEmpty(maTTDH))
+                {
+                    selectedMaTTDHs.Add(maTTDH);
+                }
+            }
+
+            if (selectedMaTTDHs.Count > 0)
+            {
+                string selectedMaTTDHsText = string.Join(", ", selectedMaTTDHs);
+
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa đơn hàng có danh sách mã {selectedMaTTDHsText} không?", "Xác nhận xóa?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        foreach (string maTTDH in selectedMaTTDHs)
+                        {
+                            deleteARow(maTTDH);
+                        }
+
+                        MessageBox.Show($"Xóa đơn hàng thành công. Đã xóa danh sách mã {selectedMaTTDHsText}.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Xóa đơn hàng không thành công. Lỗi: " + ex.Message);
+                    }
+                }
+            }
         }
-        private void deleteARow()
+
+        private void deleteARow(string maTrangThai)
         {
             try
             {
                 if (listTTDH.Count > 0)
                 {
-                    string maTrangThai = txtMaTTDH.Text;
                     for (int i = 0; i < listTTDH.Count; i++)
                     {
                         if (listTTDH[i].MaTrangThaiDonHang.CompareTo(maTrangThai) == 0)
@@ -202,8 +251,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
                 Clipboard.SetText(ex.Message);
             }
-
         }
+
         private void btnSuaDH_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dgvDH.CurrentRow;

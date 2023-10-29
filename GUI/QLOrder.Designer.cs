@@ -81,6 +81,7 @@
             dgvDH.Size = new Size(1360, 682);
             dgvDH.TabIndex = 1;
             dgvDH.DataBindingComplete += dgvDH_DataBindingComplete;
+            dgvDH.RowPostPaint += dgvDH_RowPostPaint;
             dgvDH.SelectionChanged += dgvDH_SelectionChanged;
             // 
             // maTrangThaiDonHang

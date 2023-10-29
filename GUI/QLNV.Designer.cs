@@ -87,6 +87,7 @@
             dgvNV.Size = new Size(1377, 622);
             dgvNV.TabIndex = 1;
             dgvNV.DataBindingComplete += dgvNV_DataBindingComplete;
+            dgvNV.RowPostPaint += dgvNV_RowPostPaint;
             dgvNV.SelectionChanged += dgvNV_SelectionChanged;
             // 
             // MaNV
